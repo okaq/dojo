@@ -29,4 +29,7 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
+// add favicon generator for project
+// consider concentric three-box, greyscale
+
 
