@@ -37,6 +37,11 @@ var g = {
             window.setTimeout(g.start, 1000);
         },
         "start": function() {
+            // run the field of battle simulation
+            // AI bot vs bot play
+
+            sce.cells();
+            ren.cells();
         }
 }
 // scene
@@ -47,6 +52,29 @@ var sce = {
         sce.a.r = [1920,1080,0,0];
         sce.a.c = dom.canvas(sce.a.r);
         dom.add(sce.a.c);
+    },
+    "cells": function() {
+        // meta
+        sce.b = {};
+        sce.b.w = 1920;
+        sce.b.h = 1080;
+        sce.b.px = 20;
+        sce.b.py = 20;
+        sce.b.nx = (sce.b.w / sce.b.px) >>> 0;
+        sce.b.ny = (sce.b.h / sce.b.py) >>> 0;
+        sce.b.nt = (sce.b.nx * sce.b.ny) >>> 0;
+    }
+}
+// render
+var ren = {
+    "bkgd": function() {
+        // set background to white
+    },
+    "clear": function() {
+        // clear all current canvas objects
+    },
+    "cells": function() {
+        // render current cell data
     }
 }
     // dom
