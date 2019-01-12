@@ -63,6 +63,23 @@ var sce = {
         sce.b.nx = (sce.b.w / sce.b.px) >>> 0;
         sce.b.ny = (sce.b.h / sce.b.py) >>> 0;
         sce.b.nt = (sce.b.nx * sce.b.ny) >>> 0;
+        // network
+        sce.c = [];
+        for (var i = 0; i < sce.b.nt; i++) {
+            var x0 = i % sce.b.nx;
+            var x1 = (x0 * sce.b.px) >>> 0;
+            var y0 = (i / sce.b.nx) >>> 0;
+            var y1 = (y0 * sce.b.py) >>> 0;
+            sce.c[i] = {};
+            sce.c[i].r = [sce.b.px,sce.c.py,x1,y1];
+            sce.c[i].c = dom.canvas(sce.c[i].c);
+            sce.c[i].d = rgba.rmon();
+            sce.c[i].c.can.dataset.x = "cell_" + x + "_" + y;
+            sce.c[i].c.can.addEventListener("click", sce.click, false);
+        }
+    },
+    "click": function(e) {
+        console.log(e);
     }
 }
 // render
