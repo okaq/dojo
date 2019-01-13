@@ -41,6 +41,7 @@ var g = {
             // AI bot vs bot play
 
             sce.cells();
+            sce.pop();
             ren.cells();
         }
 }
@@ -76,6 +77,18 @@ var sce = {
             sce.c[i].d = rgba.rmon();
             sce.c[i].c.can.dataset.x = "cell_" + x + "_" + y;
             sce.c[i].c.can.addEventListener("click", sce.click, false);
+        }
+    },
+    "pop": function() {
+        // add cells to scene
+        for (var i = 0; i < sce.b.nt; i++) {
+            dom.add(sce.c[i].c);
+        }
+    },
+    "off": function() {
+        // remove cells from scene
+        for (var i = 0; i < sce.b.nt; i++) {
+            dom.remove(sce.c[i].c);
         }
     },
     "click": function(e) {
