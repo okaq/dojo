@@ -42,6 +42,7 @@ var g = {
 
             sce.cells();
             sce.pop();
+            // ren.clear();
             ren.cells();
         }
 }
@@ -72,10 +73,10 @@ var sce = {
             var y0 = (i / sce.b.nx) >>> 0;
             var y1 = (y0 * sce.b.py) >>> 0;
             sce.c[i] = {};
-            sce.c[i].r = [sce.b.px,sce.c.py,x1,y1];
-            sce.c[i].c = dom.canvas(sce.c[i].c);
+            sce.c[i].r = [sce.b.px,sce.b.py,x1,y1];
+            sce.c[i].c = dom.canvas(sce.c[i].r);
             sce.c[i].d = rgba.rmon();
-            sce.c[i].c.can.dataset.x = "cell_" + x + "_" + y;
+            sce.c[i].c.can.dataset.x = "cell_" + x0 + "_" + y0;
             sce.c[i].c.can.addEventListener("click", sce.click, false);
         }
     },
@@ -99,12 +100,19 @@ var sce = {
 var ren = {
     "bkgd": function() {
         // set background to white
+        sce.a.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
     },
     "clear": function() {
         // clear all current canvas objects
     },
     "cells": function() {
         // render current cell data
+        for (var i = 0; i < sce.b.nt; i++) {
+            var c0 = sce.c[i].c;
+            c0.con.fillStyle = sce.c[i].d;
+            c0.con.fillRect(0,0,c0.can.width,c0.can.height);
+        }
     }
 }
     // dom
