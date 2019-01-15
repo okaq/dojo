@@ -44,6 +44,10 @@ var g = {
             sce.pop();
             // ren.clear();
             ren.cells();
+
+            // get neighbors
+            // fast lookup will cache neighbor indicies
+            // on creation
         }
 }
 // scene
@@ -94,6 +98,19 @@ var sce = {
     },
     "click": function(e) {
         console.log(e);
+    }
+}
+// grid
+var grid = {
+    "near": function() {
+        // grid helper functions
+        // assume NxM matrix
+        // get nearest neighbors for each index
+        // account for edges and corners
+    },
+    "class": function() {
+        // string classification
+        // corner, edge, bulk
     }
 }
 // render
