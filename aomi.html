@@ -187,6 +187,69 @@ var grid = {
         // into a proper db class
         // state, history, probability 
         // can all be recorded there
+
+        // there is a single pass, mathematical
+        // algorithm for kernel determination
+        // and it works for any convolution shape
+        // generate each index of the kernel in order
+        // then use rules based determination
+        // to see if it is added to the valid set
+    },
+    "corner0": function(i0) {
+        // top left
+        var r0 = [];
+        r0[0] = i0 + 1;
+        r0[1] = i0 + sce.b.nx;
+        return r0;
+    },
+    "corner1": function(i0) {
+        // top right
+        var r0 = [];
+        r0[0] = i0 - 1;
+        r0[1] = i0 + sce.b.nx;
+        return r0;
+    },
+    "corner2": function(i0) {
+        // bottom left
+        var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[0] = i0 + 1;
+        return r0;
+    },
+    "corner3": function(i0) {
+        // bottom right
+        var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[1] = i0 - 1;
+        return r0;
+    },
+    "edge0": function(i0) {
+        // top
+        var r0 = [];
+        r0[0] = i0 - 1;
+        r0[1] = i0 + 1;
+        r0[2] = i0 + sce.b.nx;
+        return r0;
+    },
+    "edge1": function(i0) {
+        // left
+        var r0 = [];
+        return r0;
+    },
+    "edge2": function(i0) {
+        // right
+        var r0 = [];
+        return r0;
+    },
+    "edge3": function(i0) {
+        // bottom
+        var r0 = [];
+        return r0;
+    },
+    "bulk": function(i0) {
+        // matrix
+        var r0 = [];
+        return r0;
     }
 }
 // render
