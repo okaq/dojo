@@ -108,9 +108,34 @@ var grid = {
         // get nearest neighbors for each index
         // account for edges and corners
     },
-    "class": function() {
+    "class": function(i0) {
         // string classification
         // corner, edge, bulk
+        // coordinates
+        var x0 = i0 % sce.b.nx;
+        var y0 = (i0 / sce.b.nx) >>> 0;
+        // corner cases first
+        if (i0 == 0) {
+            // top left
+            return "corner 0";
+        }
+        if (i0 == (sce.b.nx - 1)) {
+            // top right
+            return "corner 1";
+        }
+        if (i0 == (sce.b.nt - sce.b.nx)) {
+            // bottom left
+            return "corner 2";
+        }
+        if (i0 == (sce.b.nt - 1)) {
+            // bottom right
+            return "corner 3";
+        }
+
+        // lets put nearest neighbor data
+        // into a proper db class
+        // state, history, probability 
+        // can all be recorded there
     }
 }
 // render
