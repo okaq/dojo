@@ -131,6 +131,25 @@ var grid = {
             // bottom right
             return "corner 3";
         }
+        // edges and bulk
+        if (y0 == 0) {
+            // top
+            return "edge 0";
+        }
+        if (x0 == 0) {
+            // left
+            return "edge 1";
+        }
+        if (x0 == (sce.b.nx - 1)) {
+            // right
+            return "edge 2";
+        }
+        if (y0 == sce.b.ny) {
+            // bottom
+            return "edge 3";
+        }
+
+        return "bulk";
 
         // lets put nearest neighbor data
         // into a proper db class
