@@ -102,11 +102,43 @@ var sce = {
 }
 // grid
 var grid = {
-    "near": function() {
+    "near": function(i0) {
         // grid helper functions
         // assume NxM matrix
         // get nearest neighbors for each index
         // account for edges and corners
+        var s0 = grid.class(i0);
+        var r0 = [];
+        switch (s0) {
+            case "corner 0":
+                r0 = grid.corner0(i0);
+                break;
+            case "corner 1":
+                r0 = grid.corner1(i0);
+                break;
+            case "corner 2":
+                r0 = grid.corner2(i0);
+                break;
+            case "corner 3":
+                r0 = grid.corner3(i0);
+                break;
+            case "edge 0":
+                r0 = grid.edge0(i0);
+                break;
+            case "edge 1":
+                r0 = grid.edge1(i0);
+                break;
+            case "edge 2":
+                r0 = grid.edge2(i0);
+                break;
+            case "edge 3":
+                r0 = grid.edge3(i0);
+                break;
+            case "bulk":
+                r0 = grid.bulk(i0);
+                break;
+        }
+        return r0;
     },
     "class": function(i0) {
         // string classification
