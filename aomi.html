@@ -234,21 +234,34 @@ var grid = {
     "edge1": function(i0) {
         // left
         var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[1] = i0 + 1;
+        r0[2] = i0 + sce.b.nx;
         return r0;
     },
     "edge2": function(i0) {
         // right
         var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[1] = i0 - 1;
+        r0[2] = i0 + sce.b.nx;
         return r0;
     },
     "edge3": function(i0) {
         // bottom
         var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[1] = i0 - 1;
+        r0[2] = i0 + 1;
         return r0;
     },
     "bulk": function(i0) {
         // matrix
         var r0 = [];
+        r0[0] = i0 - sce.b.nx;
+        r0[1] = i0 - 1;
+        r0[2] = i0 + 1;
+        r0[3] = i0 + sce.b.nx;
         return r0;
     }
 }
