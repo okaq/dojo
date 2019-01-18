@@ -49,6 +49,19 @@ var g = {
             // fast lookup will cache neighbor indicies
             // on creation
             sce.grid();
+
+            // test loop
+            g.tick = 0;
+            g.id = window.setInterval(g.near, 1000);
+        },
+        "near": function() {
+            console.log("tick count = " + g.tick);
+            if (g.tick >= 128) {
+                console.log("anim done");
+                window.clearInterval(g.id);
+            }
+            // random sample and diffuse
+            g.tick = g.tick + 1;
         }
 }
 // scene
@@ -110,6 +123,7 @@ var sce = {
             sce.d[k0] = {};
             sce.d[k0].a = i;
             sce.e[i] = k0;
+            sce.d[k0].b = grid.near(i);
         }
     }
 }
