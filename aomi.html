@@ -48,6 +48,7 @@ var g = {
             // get neighbors
             // fast lookup will cache neighbor indicies
             // on creation
+            sce.grid();
         }
 }
 // scene
@@ -98,6 +99,18 @@ var sce = {
     },
     "click": function(e) {
         console.log(e);
+    },
+    "grid": function() {
+        // setup the db
+        sce.d = {};
+        // keys list
+        sce.e = [];
+        for (var i = 0; i < sce.b.nt; i++) {
+            var k0 = sce.c[i].c.can.dataset.x;
+            sce.d[k0] = {};
+            sce.d[k0].a = i;
+            sce.e[i] = k0;
+        }
     }
 }
 // grid
