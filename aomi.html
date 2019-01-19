@@ -59,8 +59,38 @@ var g = {
             if (g.tick >= 128) {
                 console.log("anim done");
                 window.clearInterval(g.id);
+                return;
             }
+
             // random sample and diffuse
+            var i0 = (Math.random() * sce.b.nt) >>> 0;
+            var k0 = sce.e[i0];
+            console.log(k0 + " index is " + i0 + " and nearest neighbors...");
+            var n0 = sce.d[k0].b;
+            console.log(n0);
+
+            // spread center color to neighbors
+            var d0 = sce.c[i0].d;
+            for (var i = 0; i < n0.length; i++) {
+                var i1 = n0[i];
+                try {
+                    sce.c[i1].d = d0;
+                } catch (error) {
+                    console.log(error);
+                    console.log("index not found: " + i1);
+                    // fix: bottom edge index 0 error
+                }
+            }
+            ren.cells();
+            
+            // we can simulate a grain boundary
+            // nucleate and grow several seeds per tick
+            // for a few cycles
+
+            // requires a dedicated DB class
+            // we want to preserve initial values
+            // and keep track of game state history
+
             g.tick = g.tick + 1;
         }
 }
@@ -203,7 +233,7 @@ var grid = {
             // right
             return "edge 2";
         }
-        if (y0 == sce.b.ny) {
+        if (y0 == (sce.b.ny - 1)) {
             // bottom
             return "edge 3";
         }
