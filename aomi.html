@@ -56,9 +56,12 @@ var g = {
         },
         "near": function() {
             console.log("tick count = " + g.tick);
-            if (g.tick >= 128) {
+            if (g.tick >= 4) {
                 console.log("anim done");
                 window.clearInterval(g.id);
+                // reduce tick limit
+                // async start nuclea simulate
+                window.setITimeout(g.nucl, 1000);
                 return;
             }
 
@@ -92,6 +95,10 @@ var g = {
             // and keep track of game state history
 
             g.tick = g.tick + 1;
+        },
+        "nucl": function() {
+            // select N seeds at random
+            // per tick, keep track of growth frontier
         }
 }
 // scene
