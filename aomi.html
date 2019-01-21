@@ -100,6 +100,9 @@ var g = {
             // select N seeds at random
             // per tick, keep track of growth frontier
 
+            // db class
+            db.init();
+
             // new loop
             g.tick = 0;
             g.id = window.setInterval(g.frame, 1000);
@@ -112,6 +115,23 @@ var g = {
             }
             g.tick = g.tick + 1;
         }
+}
+// data
+var db = {
+    "init": function() {
+        db.a = {};
+        // store initial grid values
+        db.a.a = [];
+        // grwoth history
+        db.a.b = [];
+        for (var i = 0; i < sce.b.nt; i++) {
+            db.a.a[i] = sce.c[i].d;
+            db.a.b[i] = [];
+        }
+    },
+    "seeds": function() {
+        // select N random nucleation points
+    }
 }
 // scene
 var sce = {
