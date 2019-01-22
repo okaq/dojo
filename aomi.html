@@ -122,7 +122,7 @@ var db = {
         db.a = {};
         // store initial grid values
         db.a.a = [];
-        // grwoth history
+        // growth history
         db.a.b = [];
         for (var i = 0; i < sce.b.nt; i++) {
             db.a.a[i] = sce.c[i].d;
@@ -131,6 +131,19 @@ var db = {
     },
     "seeds": function() {
         // select N random nucleation points
+        var n0 = 8;
+        var g0 = [];
+        while (g0.length < 8) {
+            var g1 = (Math.random() * sce.b.nt) >>> 0;
+            if (g0.includes(g1)) {
+                continue;
+            } else {
+                g0.push(g1);
+            }
+        }
+        console.log(g0);
+        // include in data set
+        db.a.c = g0;
     }
 }
 // scene
