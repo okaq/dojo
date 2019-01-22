@@ -102,6 +102,8 @@ var g = {
 
             // db class
             db.init();
+            db.seeds();
+            db.frontier();
 
             // new loop
             g.tick = 0;
@@ -144,6 +146,20 @@ var db = {
         console.log(g0);
         // include in data set
         db.a.c = g0;
+    },
+    "frontier": function() {
+        // at each seed index
+        // list near neighbors
+        db.a.d = [];
+        for (var i = 0; i < db.a.c.length; i++) {
+            var i0 = db.a.c[i];
+            var k0 = sce.e[i0];
+            var n0 = sce.d[k0].b;
+            db.a.d[i] = n0;
+        }
+
+        console.log(db.a.d); 
+        // setup the history machine
     }
 }
 // scene
