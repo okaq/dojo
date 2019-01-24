@@ -61,7 +61,7 @@ var g = {
                 window.clearInterval(g.id);
                 // reduce tick limit
                 // async start nuclea simulate
-                window.setITimeout(g.nucl, 1000);
+                window.setTimeout(g.nucl, 1000);
                 return;
             }
 
@@ -104,6 +104,7 @@ var g = {
             db.init();
             db.seeds();
             db.frontier();
+            db.history();
 
             // new loop
             g.tick = 0;
@@ -115,6 +116,8 @@ var g = {
                 console.log("anim done");
                 window.clearInterval(g.id);
             }
+            // update
+
             g.tick = g.tick + 1;
         }
 }
@@ -160,6 +163,11 @@ var db = {
 
         console.log(db.a.d); 
         // setup the history machine
+    },
+    "history": function() {
+        db.a.e = [];
+        // process the frame at each point in time
+        // scene is rendered from the data progression
     }
 }
 // scene
