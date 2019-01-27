@@ -30,15 +30,46 @@ var g = {
             console.log("start dojo...");
 
             // subs
-            g.subs = [dom,bmp];
+            g.subs = [dom,bmp,sce];
             g.subs.forEach(function(el){el.init();});
 
             // start
+            window.setTimeout(g.start, 1000);
 
             // split
             console.log("load time: " + (window.performance.now() - t0));
+        },
+        "start": function() {
+            console.log("dragon live!");
+            ren.data();
+            // ren.dragon();
         }
 }
+// scene
+var sce = {
+    "init": function() {
+        sce.a = {};
+        sce.a.r = [1024,1024,448,28];
+        sce.a.c = dom.canvas(sce.a.r);
+        dom.add(sce.a.c);
+        sce.a.d = rgba.rmon();
+        sce.a.c.can.dataset.x = "logo_0";
+        sce.a.c.can.addEventListener("click", sce.click, false);
+    },
+    "click": function(e) {
+        console.log(e);
+    }
+ }
+ // render
+ var ren = {
+     "data": function() {
+        sce.a.c.con.fillStyle = sce.a.d;
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+     },
+     "dragon": function() {
+
+     }
+ }
     // dom
     var dom = {
         "init": function() {
