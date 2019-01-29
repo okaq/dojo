@@ -53,7 +53,8 @@ var g = {
             sce.grid();
 
             // render
-            ren.clear();
+            ren.clear2();
+            ren.grid();
         }
 }
 // scene
@@ -96,9 +97,26 @@ var sce = {
         sce.c.c = [];
         sce.c.d = [];
         for (var i = 0; i < sce.c.nt; i++) {
-
+            var x0 = i % sce.c.px;
+            var y0 = (i / sce.c.px) >>> 0;
+            var x1 = (x0 * sce.c.px) >>> 0;
+            var y1 = (y0 * sce.c.py) >>> 0;
+            sce.c.r[i] = [sce.c.px,sce.c.py,x1,y1];
+            sce.c.c[i] = dom.canvas(sce.c.r[i]);
+            sce.c.c[i].can.dataset.x = "grid_" + x0 + "_" + y0;
+            sce.c.c[i].can.addEventListener("click", sce.click, false);
+            sce.c.d[i] = rgba.rmon();
         } 
     }
+ }
+ // mirror
+ var mir = {
+     "flip": function(b0) {
+         // mirror pixel ops
+         // input square bit array
+         // output flips
+         // horizontal, vertical, rotate, shuffle
+     } 
  }
  // render
  var ren = {
@@ -132,6 +150,19 @@ var sce = {
              var y1 = (y0 * 32) >>> 0;
              sce.a.c.con.fillRect(x1,y1,32,32);
          }
+     },
+     "clear2": function() {
+         // bkgd
+        sce.b.c.con.fillStyle = rgba.mono(0);
+        sce.b.c.con.fillRect(0,0,sce.b.c.can.width,sce.b.c.can.height);
+        // grid
+        for (var i = 0; i < sce.c.nt; i++) {
+            sce.c.c[i].con.fillStyle = rgba.mono(0);
+            sce.c.c[i].con.fillRect(0,0,sce.c.c[i].can.width,sce.c.c[i].can.height);
+        }
+     },
+     "grid": function() {
+         // data in grid canvas
      }
  }
     // dom
