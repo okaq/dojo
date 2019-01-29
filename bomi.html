@@ -44,6 +44,16 @@ var g = {
             // ren.data();
             bmp.dragon();
             ren.dragon();
+
+            // grid
+            window.setTimeout(g.grid, 2000);
+        },
+        "grid": function() {
+            // setup
+            sce.grid();
+
+            // render
+            ren.clear();
         }
 }
 // scene
@@ -69,6 +79,25 @@ var sce = {
     },
     "click": function(e) {
         console.log(e);
+    },
+    "grid": function() {
+        // remove canvas
+        dom.remove(sce.a.c);
+        // 32x32
+        sce.c = {};
+        sce.c.w = 1920;
+        sce.c.h = 1080;
+        sce.c.px = 32;
+        sce.c.py = 32;
+        sce.c.nx = (sce.c.w / sce.c.px) >>> 0;
+        sce.c.ny = (sce.c.h / sce.c.py) >>> 0;
+        sce.c.nt = (sce.c.nx * sce.c.ny) >>> 0;
+        sce.c.r = [];
+        sce.c.c = [];
+        sce.c.d = [];
+        for (var i = 0; i < sce.c.nt; i++) {
+
+        } 
     }
  }
  // render
