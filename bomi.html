@@ -116,7 +116,38 @@ var sce = {
          // input square bit array
          // output flips
          // horizontal, vertical, rotate, shuffle
-     } 
+
+         // get row, column
+         // set row, column
+         // reverse an array
+
+         // all ops depend on sce.c globals: px,py,nx,ny,nt
+     },
+     "row": function(i0) {
+         // get row at index
+     },
+     "col": function(i0) {
+         // get column values at index
+     },
+     "row2": function(i0, b0) {
+         // set values of bit array in row at index
+     },
+     "col2": function(i0, b0) {
+         // set values of bit array in col at index
+     },
+     "shuffle": function(b0) {
+         // fisher yates random shuffle
+         // keep track of history to reverse
+         for (var i = 0; i < b0.length - 1; i++) {
+            var i0 = i + 1;
+            var i1 = b0.length - i1;
+            var f0 = (Math.random() * i1) >>> 0;
+            var i2 = i + f0;
+            var t0 = b0[i2];
+            b0[i2] = b0[i];
+            b0[i] = t0;
+         }
+     }
  }
  // render
  var ren = {
@@ -163,6 +194,10 @@ var sce = {
      },
      "grid": function() {
          // data in grid canvas
+        for (var i = 0; i < sce.c.nt; i++) {
+            sce.c.c[i].con.fillStyle = rgba.mono(0);
+            sce.c.c[i].con.fillRect(0,0,sce.c.c[i].can.width,sce.c.c[i].can.height);
+        }
      }
  }
     // dom
