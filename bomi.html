@@ -152,6 +152,15 @@ var sce = {
      "col2": function(i0, b0, b1) {
          // set values of bit array in col at index
      },
+     "reverse": function(b0) {
+         // reverse values in bit array
+         var b1 = [];
+         for (var i = 0; i < b0.length; i++) {
+             var i1 = (b0.length - 1 - i) >>> 0;
+             b1[i] = b0[i1];
+         } 
+         return b1;
+     },
      "shuffle": function(b0) {
          // fisher yates random shuffle
          // keep track of history to reverse
@@ -185,6 +194,9 @@ var sce = {
          var t3 = mir.col(0, t0);
          console.log("get col 0");
          console.log(t3);
+         var t4 = mir.reverse(t0);
+         console.log("reverse array");
+         console.log(t4);
      }
  }
  // render
