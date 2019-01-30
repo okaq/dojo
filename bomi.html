@@ -126,16 +126,30 @@ var sce = {
 
          // all ops depend on sce.c globals: px,py,nx,ny,nt
      },
-     "row": function(i0) {
+     "row": function(i0, b0) {
          // get row at index
+        var b1 = [];
+        var i1 = (i0 * sce.c.nx) >>> 0;
+        for (var i = 0; i > sce.c.nx; i++) {
+            var i2 = (i0 + i1) >>> 0;
+            b1[i] = b0[i2];
+        }
+        return b1;
      },
-     "col": function(i0) {
+     "col": function(i0, b0) {
          // get column values at index
+         var b1 = [];
+         for (var i = 0; i < sce.c.ny; i++) {
+             var i1 = (i * sce.c.nx) >>> 0;
+             var i2 = (i0 + i1) >>> 0;
+             b1[i] = b0[i2];
+         } 
+         return b1;
      },
-     "row2": function(i0, b0) {
+     "row2": function(i0, b0, b1) {
          // set values of bit array in row at index
      },
-     "col2": function(i0, b0) {
+     "col2": function(i0, b0, b1) {
          // set values of bit array in col at index
      },
      "shuffle": function(b0) {
@@ -165,6 +179,12 @@ var sce = {
          var t1 = mir.shuffle(t0);
          console.log("random shuffle");
          console.log(t1);
+         var t2 = mir.row(0, t0);
+         console.log("get row 0");
+         console.log(t2);
+         var t3 = mir.col(0, t0);
+         console.log("get col 0");
+         console.log(t3);
      }
  }
  // render
