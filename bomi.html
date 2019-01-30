@@ -55,6 +55,9 @@ var g = {
             // render
             ren.clear2();
             ren.grid();
+
+            mir.test();
+            // requires visualization
         }
 }
 // scene
@@ -138,15 +141,30 @@ var sce = {
      "shuffle": function(b0) {
          // fisher yates random shuffle
          // keep track of history to reverse
-         for (var i = 0; i < b0.length - 1; i++) {
+         var b1 = b0.slice(0);
+         for (var i = 0; i < b1.length - 1; i++) {
             var i0 = i + 1;
-            var i1 = b0.length - i1;
+            var i1 = b1.length - i1;
             var f0 = (Math.random() * i1) >>> 0;
             var i2 = i + f0;
-            var t0 = b0[i2];
-            b0[i2] = b0[i];
-            b0[i] = t0;
+            var t0 = b1[i2];
+            b1[i2] = b1[i];
+            b1[i] = t0;
          }
+         return b1;
+         // keep original intact
+     },
+     "test": function() {
+         // harness
+         var t0 = [];
+         for (var i = 0; i < 1024; i++) {
+             t0[i] = Math.random() >= 0.5 ? 1 : 0;
+         }
+         console.log("original array");
+         console.log(t0);
+         var t1 = mir.shuffle(t0);
+         console.log("random shuffle");
+         console.log(t1);
      }
  }
  // render
