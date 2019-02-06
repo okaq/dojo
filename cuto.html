@@ -41,12 +41,41 @@ var g = {
         },
         "start": function() {
             console.log("hanabi go");
+            
+            ren.clear();
+            net.start();
         }
 }
 // scene
 var sce = {
     "init": function() {
         sce.a = {};
+        // bkgd
+        sce.a.r = [1920,1080,0,0];
+        sce.a.c = dom.canvas(sce.a.r);
+        dom.add(sce.a.c);
+        sce.a.d = rgba.css([0,0,0,1.0]);
+        sce.a.c.can.dataset.x = "bkgd_0";
+        sce.a.c.can.addEventListener("click", sce.click, false);
+    },
+    "click": function(e) {
+        consoel.log(e);
+    }
+}
+// render
+var ren = {
+    "clear": function() {
+        sce.a.c.con.fillStyle = sce.a.d;
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+    }
+}
+// xhr
+var net = {
+    "start": function() {
+        net.a = [];
+        net.a[0] = "http://localhost:8080/a";
+        net.b = new XMLHttpRequest();
+        console.log(net.b);
     }
 }
     // dom
