@@ -76,6 +76,13 @@ var net = {
         net.a[0] = "http://localhost:8080/a";
         net.b = new XMLHttpRequest();
         console.log(net.b);
+        net.pid();
+    },
+    "pid": function() {
+        // id format
+        // browser_rng:server_rng:timestamp
+        net.c = (Math.random() * Number.MAX_SAFE_INTEGER) >>> 0;
+        console.log("pid: " + net.c);
     }
 }
     // dom
