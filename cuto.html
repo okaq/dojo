@@ -50,7 +50,16 @@ var g = {
 
             // scene canvas
             sce.bogan();
+            db.meta();
         }
+}
+// data
+var db = {
+    "meta": function() {
+        // animation history
+        // initial conditions
+        db.a = {};
+    }
 }
 // scene
 var sce = {
@@ -76,28 +85,28 @@ var sce = {
         dom.add(sce.b.a.c);
         sce.b.a.d = rgba.rmon();
         sce.b.a.c.can.dataset.x = "can_a";
-        sce.b.a.c.can.addEvenetListener("click", sce.click, false);
+        sce.b.a.c.can.addEventListener("click", sce.click, false);
         sce.b.b = {};
         sce.b.b.r = [1024,1024,896,0];
         sce.b.b.c = dom.canvas(sce.b.b.r);
         dom.add(sce.b.b.c);
         sce.b.b.d = rgba.rmon();
         sce.b.b.c.can.dataset.x = "can_b";
-        sce.b.b.c.can.addEvenetListener("click", sce.click, false);
+        sce.b.b.c.can.addEventListener("click", sce.click, false);
         sce.b.c = {};
         sce.b.c.r = [1024,1024,0,56];
         sce.b.c.c = dom.canvas(sce.b.c.r);
         dom.add(sce.b.c.c);
         sce.b.c.d = rgba.rmon();
         sce.b.c.c.can.dataset.x = "can_c";
-        sce.b.c.c.can.addEvenetListener("click", sce.click, false);
+        sce.b.c.c.can.addEventListener("click", sce.click, false);
         sce.b.d = {};
         sce.b.d.r = [1024,1024,896,56];
         sce.b.d.c = dom.canvas(sce.b.d.r);
         dom.add(sce.b.d.c);
         sce.b.d.d = rgba.rmon();
         sce.b.d.c.can.dataset.x = "can_d";
-        sce.b.d.c.can.addEvenetListener("click", sce.click, false);
+        sce.b.d.c.can.addEventListener("click", sce.click, false);
     }
 }
 // render
