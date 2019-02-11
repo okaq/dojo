@@ -59,6 +59,11 @@ var g = {
                 var b0 = bmp.c[m0];
                 ren.boge(b0,c0);
             }
+
+            // loop for animation engine
+            // per frame generate new scene
+            // bitmap ops, dom tree changes
+            // record iterations in db
         }
 }
 // data
@@ -136,7 +141,7 @@ var ren = {
     "boge": function(b0, c0) {
         // rng bkgd fill
         c0.con.fillStyle = rgba.rand();
-        c0.con.fillRect(0,0,c0.can.widt,c0.can.height);
+        c0.con.fillRect(0,0,c0.can.width,c0.can.height);
         c0.con.fillStyle = rgba.rand();
         // cycle bits
         for (var i = 0; i < b0.length; i++) {
@@ -148,7 +153,7 @@ var ren = {
             var y0 = (i / 32) >>> 0;
             var x1 = (x0 * 32) >>> 0;
             var y1 = (y0 * 32) >>> 0;
-            c0.con.fillRect(32,32,x1,y1);
+            c0.con.fillRect(x1,y1,32,32);
         }
     }
 }
