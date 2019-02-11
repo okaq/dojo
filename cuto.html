@@ -51,6 +51,14 @@ var g = {
             // scene canvas
             sce.bogan();
             db.meta();
+            for (var i = 0; i < db.a.ring.length; i++) {
+                var k0 = db.a.ring[i];
+                var c0 = sce.b[k0].c;
+                var i0 = db.a.buff[i];
+                var m0 = db.a.maps[i0];
+                var b0 = bmp.c[m0];
+                ren.boge(b0,c0);
+            }
         }
 }
 // data
@@ -63,6 +71,12 @@ var db = {
         db.a.maps = ['dragon','ring_0','ring_1','ring_2'];
         db.a.buff = [0,1,2,3];
         // shuffle buff
+    },
+    "advance": function() {
+        // advance buffer and wrap overflow
+    },
+    "shuffle": function() {
+        // in place random shuffle
     }
 }
 // scene
@@ -118,6 +132,24 @@ var ren = {
     "clear": function() {
         sce.a.c.con.fillStyle = sce.a.d;
         sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+    },
+    "boge": function(b0, c0) {
+        // rng bkgd fill
+        c0.con.fillStyle = rgba.rand();
+        c0.con.fillRect(0,0,c0.can.widt,c0.can.height);
+        c0.con.fillStyle = rgba.rand();
+        // cycle bits
+        for (var i = 0; i < b0.length; i++) {
+            // assume 1024x1024 bitmap, 32p blocks
+            if (b0[i] == 0) {
+                continue;
+            }
+            var x0 = i % 32;
+            var y0 = (i / 32) >>> 0;
+            var x1 = (x0 * 32) >>> 0;
+            var y1 = (y0 * 32) >>> 0;
+            c0.con.fillRect(32,32,x1,y1);
+        }
     }
 }
 // xhr
@@ -283,6 +315,7 @@ var bmp = {
                 var b2  = bmp.exp(b1);
                 bmp.c[k0] = b2;
             }
+            bmp.c["dragon"] = bmp.b["dragon"];
             console.log(bmp.c);
         }
     }
