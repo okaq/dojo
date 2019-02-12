@@ -64,6 +64,12 @@ var g = {
             // per frame generate new scene
             // bitmap ops, dom tree changes
             // record iterations in db
+
+            // new inner loop
+            window.setTimeout(g.start2, 1000);
+        },
+        "start2": function() {
+            sce.amphi();
         }
 }
 // data
@@ -130,6 +136,26 @@ var sce = {
         sce.b.d.d = rgba.rmon();
         sce.b.d.c.can.dataset.x = "can_d";
         sce.b.d.c.can.addEventListener("click", sce.click, false);
+    },
+    "amphi": function() {
+        // remove bogan
+        // add top and bottom rows
+        // and left and right cols
+        var b0 = ['a','b','c','d'];
+        for (var i = 0; i < b0.length; i++) {
+            var k0 = b0[i];
+            var c0 = sce.b[k0].c;
+            dom.remove(c0);
+        }
+        sce.c = {};
+        for (var x0 = 0; x0 < 32; x0++) {
+            var k0 = "top_" + x0;
+            var k1 = "bot_" + x0;
+        }
+        for (var y0 = 1; y0 < 31; y0++) {
+            var k0 = "left_" + y0;
+            var k1 = "right_" + y0;
+        }
     }
 }
 // render
