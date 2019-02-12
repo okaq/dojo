@@ -72,6 +72,8 @@ var g = {
             sce.amphi();
             ren.clear();
             ren.amp();
+            db.pamp();
+            ren.gomp();
         }
 }
 // data
@@ -90,6 +92,16 @@ var db = {
     },
     "shuffle": function() {
         // in place random shuffle
+    },
+    "pamp": function() {
+        // the machine gaze
+        db.b = {};
+        for (var i = 0; i < sce.c.d.length; i++) {
+            var k0 = sce.c.d[i];
+            db.b[k0] = {};
+            db.b[k0].a = (Math.random() * db.a.buff.length) >>> 0;
+            // an index into current map buffer
+        }
     }
 }
 // scene
@@ -227,6 +239,9 @@ var ren = {
             c0.c.con.fillStyle = c0.d;
             c0.c.con.fillRect(0,0,c0.c.can.width,c0.c.can.height);
         }
+    },
+    "gomp": function() {
+        
     }
 }
 // xhr
