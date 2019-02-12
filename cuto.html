@@ -230,6 +230,19 @@ var ren = {
             var y1 = (y0 * 32) >>> 0;
             c0.con.fillRect(x1,y1,32,32);
         }
+    },    
+    "boge2": function(b0, c0) {
+        c0.con.fillStyle = rgba.rand();
+        // cycle bits
+        for (var i = 0; i < b0.length; i++) {
+            // assume 1024x1024 bitmap, 32p blocks
+            if (b0[i] == 0) {
+                continue;
+            }
+            var x0 = i % 32;
+            var y0 = (i / 32) >>> 0;
+            c0.con.fillRect(x0,y0,1,1);
+        }
     },
     "amp": function() {
         for (var i = 0; i < sce.c.d.length; i++) {
@@ -241,7 +254,14 @@ var ren = {
         }
     },
     "gomp": function() {
-        
+        for (var i = 0; i < sce.c.d.length; i++) {
+            var k0 = sce.c.d[i];
+            var c0 = sce.c[k0].c;
+            var i0 = db.b[k0].a;
+            var m0 = db.a["maps"][i0];
+            var b0 = bmp.c[m0];
+            ren.boge2(b0,c0);
+        }
     }
 }
 // xhr
