@@ -70,6 +70,8 @@ var g = {
         },
         "start2": function() {
             sce.amphi();
+            ren.clear();
+            ren.amp();
         }
 }
 // data
@@ -148,13 +150,48 @@ var sce = {
             dom.remove(c0);
         }
         sce.c = {};
-        for (var x0 = 0; x0 < 32; x0++) {
+        sce.c.d = [];
+        for (var x0 = 0; x0 < 60; x0++) {
             var k0 = "top_" + x0;
             var k1 = "bot_" + x0;
+            sce.c.d.push(k0,k1);
+            sce.c[k0] = {};
+            sce.c[k1] = {};
+            var x1 = (x0 * 32) >>> 0;
+            var y0 = (1080 - 32) >>> 0;
+            sce.c[k0].r = [32,32,x1,0];
+            sce.c[k1].r = [32,32,x1,y0];
+            sce.c[k0].c = dom.canvas(sce.c[k0].r);
+            sce.c[k1].c = dom.canvas(sce.c[k1].r);
+            dom.add(sce.c[k0].c);
+            dom.add(sce.c[k1].c);
+            sce.c[k0].d = rgba.rand();
+            sce.c[k1].d = rgba.rand();
+            sce.c[k0].c.can.dataset.x = k0;
+            sce.c[k1].c.can.dataset.x = k1;
+            sce.c[k0].c.can.addEventListener("click", sce.click, false);
+            sce.c[k1].c.can.addEventListener("click", sce.click, false);
         }
-        for (var y0 = 1; y0 < 31; y0++) {
+        for (var y0 = 1; y0 < 33; y0++) {
             var k0 = "left_" + y0;
             var k1 = "right_" + y0;
+            sce.c.d.push(k0,k1);
+            sce.c[k0] = {};
+            sce.c[k1] = {};
+            var x0 = (1920 - 32) >>> 0;
+            var y1 = (y0 * 32) >>> 0;
+            sce.c[k0].r = [32,32,0,y1];
+            sce.c[k1].r = [32,32,x0,y1];
+            sce.c[k0].c = dom.canvas(sce.c[k0].r);
+            sce.c[k1].c = dom.canvas(sce.c[k1].r);
+            dom.add(sce.c[k0].c);
+            dom.add(sce.c[k1].c);
+            sce.c[k0].d = rgba.rand();
+            sce.c[k1].d = rgba.rand();
+            sce.c[k0].c.can.dataset.x = k0;
+            sce.c[k1].c.can.dataset.x = k1;
+            sce.c[k0].c.can.addEventListener("click", sce.click, false);
+            sce.c[k1].c.can.addEventListener("click", sce.click, false);
         }
     }
 }
@@ -180,6 +217,15 @@ var ren = {
             var x1 = (x0 * 32) >>> 0;
             var y1 = (y0 * 32) >>> 0;
             c0.con.fillRect(x1,y1,32,32);
+        }
+    },
+    "amp": function() {
+        for (var i = 0; i < sce.c.d.length; i++) {
+            var k0 = sce.c.d[i];
+            // console.log(k0);
+            var c0 = sce.c[k0];
+            c0.c.con.fillStyle = c0.d;
+            c0.c.con.fillRect(0,0,c0.c.can.width,c0.c.can.height);
         }
     }
 }
