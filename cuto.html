@@ -79,7 +79,9 @@ var g = {
             window.setTimeout(g.start3, 2000);
         },
         "start3": function() {
+            db.port();
             sce.dore();
+            ren.lome();
         }
 }
 // data
@@ -115,9 +117,9 @@ var db = {
         db.c.a = {};
         db.c.a.a = "THE WORTHY";
         db.c.a.b = [640,64,640,640];
-        db.c.a = {};
-        db.c.a.a = "ARE WE NOT SEEN";
-        db.c.a.b = [480,32,600,720];
+        db.c.b = {};
+        db.c.b.a = "ARE WE NOT SEEN";
+        db.c.b.b = [480,32,600,720];
 
     }
 }
@@ -224,7 +226,17 @@ var sce = {
         }
     },
     "dore": function() {
+        // text blocks
+        // maps to db.c
         sce.d = {};
+        sce.d.a = {};
+        sce.d.a.r = db.c.a.b;
+        sce.d.a.c = dom.canvas(sce.d.a.r);
+        dom.add(sce.d.a.c);
+        sce.d.b = {};
+        sce.d.b.r = db.c.b.b;
+        sce.d.b.c = dom.canvas(sce.d.b.r);
+        dom.add(sce.d.b.c);
     }
 }
 // render
@@ -282,6 +294,12 @@ var ren = {
             var b0 = bmp.c[m0];
             ren.boge2(b0,c0);
         }
+    },
+    "lome": function() {
+        sce.d.a.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.d.a.c.con.fillRect(0,0,sce.d.a.c.can.width,sce.d.a.c.can.height);
+        sce.d.b.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.d.b.c.con.fillRect(0,0,sce.d.b.c.can.width,sce.d.b.c.can.height);
     }
 }
 // xhr
