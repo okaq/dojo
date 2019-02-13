@@ -74,6 +74,12 @@ var g = {
             ren.amp();
             db.pamp();
             ren.gomp();
+
+            // next loop
+            window.setTimeout(g.start3, 2000);
+        },
+        "start3": function() {
+            sce.dore();
         }
 }
 // data
@@ -216,6 +222,9 @@ var sce = {
             sce.c[k0].c.can.addEventListener("click", sce.click, false);
             sce.c[k1].c.can.addEventListener("click", sce.click, false);
         }
+    },
+    "dore": function() {
+        sce.d = {};
     }
 }
 // render
