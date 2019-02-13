@@ -102,6 +102,17 @@ var db = {
             db.b[k0].a = (Math.random() * db.a.buff.length) >>> 0;
             // an index into current map buffer
         }
+    },
+    "port": function() {
+        // big and little word arrays
+        db.c = {};
+        db.c.a = {};
+        db.c.a.a = "THE WORTHY";
+        db.c.a.b = [640,64,640,640];
+        db.c.a = {};
+        db.c.a.a = "ARE WE NOT SEEN";
+        db.c.a.b = [480,32,600,720];
+
     }
 }
 // scene
