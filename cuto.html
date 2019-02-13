@@ -82,6 +82,7 @@ var g = {
             db.port();
             sce.dore();
             ren.lome();
+            ren.text();
         }
 }
 // data
@@ -300,6 +301,25 @@ var ren = {
         sce.d.a.c.con.fillRect(0,0,sce.d.a.c.can.width,sce.d.a.c.can.height);
         sce.d.b.c.con.fillStyle = rgba.css([255,255,255,1.0]);
         sce.d.b.c.con.fillRect(0,0,sce.d.b.c.can.width,sce.d.b.c.can.height);
+    },
+    "text": function() {
+        for (var i = 0; i < db.c.a.a.length; i++) {
+            var s0 = db.c.a.a[i];
+            var b0 = bmp.a[s0];
+            if (b0 == null) {
+                console.log(i, s0);
+                continue;
+            }
+            var h0 = sce.d.b.c.can.height;
+            var w0 = h0;
+            var w1 = (w0 / 32) >>> 0;
+            var x0 = (i * w0) >>> 0;
+            var y0 = 0;
+            ren.bmp2(b0,r0,c0);
+        }
+    },
+    "bmp2": function(b0,r0,c0) {
+        // render bitmap in canvas rect
     }
 }
 // xhr
