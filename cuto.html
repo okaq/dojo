@@ -310,12 +310,13 @@ var ren = {
                 console.log(i, s0);
                 continue;
             }
-            var h0 = sce.d.b.c.can.height;
+            var h0 = sce.d.a.c.can.height;
             var w0 = h0;
             var w1 = (w0 / 32) >>> 0;
             var x0 = (i * w0) >>> 0;
             var y0 = 0;
-            ren.bmp2(b0,r0,c0);
+            var r0 = [w0,w0,x0,y0];
+            ren.bmp2(b0,r0,sce.d.a.c);
         }
     },
     "bmp2": function(b0,r0,c0) {
