@@ -14,6 +14,7 @@ import (
 const (
 	INDEX = "doho.html"
 	DATA = "dohod/"
+	FONTS = "fonts/"
 )
 
 func DohoHandler(w http.ResponseWriter, r *http.Request) {
@@ -31,5 +32,9 @@ func main() {
 	http.HandleFunc("/", DohoHandler)
 	http.ListenAndServe(":8080", nil)
 }
+
+// load fonts from directory
+// strip prefix
+// add mime type header
 
 
