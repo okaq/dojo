@@ -47,7 +47,19 @@ var g = {
             // u1f001-u1f484
             // web loader from
             // fonts/NotoColorEmoji.ttf
+
+            net.noto();
         }
+}
+// xhr
+var net = {
+    "noto": function() {
+        net.a = new XMLHttpRequest();
+
+        // transfer font file as binary blob
+        // then use fetch api and parse to
+        // create window uri data
+    }
 }
     // dom
     var dom = {
