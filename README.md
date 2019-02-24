@@ -32,4 +32,9 @@ Pipeline for bitmap sample and encode
 Naming convention for bitmap sample and encode
 kirad/dragon_1.png -> kiraj/dragons.json
 
+erai - jp. for "great, grand"
+experiments with wave form collapse
+sample frmo prior dsitributions
+but also attempt to invent new ones
+
 
