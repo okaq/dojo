@@ -16,7 +16,7 @@ const (
 
 func motd() {
 	fmt.Println("okaq web serve on localhost:8080")
-	fmt.Printf("%s", time.Now().String())
+	fmt.Printf("%s\n", time.Now().String())
 }
 
 func meta() {
@@ -32,7 +32,7 @@ func EraiHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	motd()
 	meta()
-	http.HandleFUnc("/", EraiHandler)
+	http.HandleFunc("/", EraiHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
