@@ -30,7 +30,7 @@ var g = {
             console.log("wave form...");
 
             // subs
-            g.subs = [dom];
+            g.subs = [dom,sce];
             g.subs.forEach(function(el){el.init();});
 
             // wait and begin
@@ -40,6 +40,27 @@ var g = {
         "start": function() {
             // load a unicode font
         }
+}
+// scene
+var sce = {
+    "init": function() {
+        sce.a = {};
+        // bkgd
+        sce.a.r = [1920,1080,0,0];
+        sce.a.c = dom.canvas(sce.a.r);
+        dom.add(sce.a.c);
+        sce.a.d = rgba.css([0,0,0,1.0]);
+        sce.a.c.can.dataset.x = "bkgd_0";
+        sce.a.c.can.addEventListener("click", sce.click, false);
+
+        // scene generator
+        // to create a canvas, assign id, add to dom
+        // all from single rect input
+
+        // scene manager
+        // includes layout engine logic
+        // manages canvas in single screen
+    }
 }
     // dom
     var dom = {
