@@ -45,6 +45,17 @@ var g = {
             // as well as a data base and history
             // to record finished loops
             // and track queued up ones
+
+            g.tick = 0;
+            g.id = window.setInterval(g.frame, 1000);
+        },
+        "frame": function() {
+            if (g.tick >= 16) {
+                window.clearInterval(g.id);
+                console.log("anim done");
+            }
+            ren.frame();
+            g.tick = g.tick + 1;
         }
 }
 // scene
@@ -66,6 +77,13 @@ var sce = {
         // scene manager
         // includes layout engine logic
         // manages canvas in single screen
+    }
+}
+// render
+var ren = {
+    "frame": function() {
+        sce.a.c.con.fillStyle = rgba.rand();
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
     }
 }
     // dom
