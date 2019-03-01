@@ -29,10 +29,16 @@ func EraiHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func SaveHandler(w http.ResponseWriter, r *http.Request) {
+	// upload blob and save to disk
+	fmt.Println(r)
+}
+
 func main() {
 	motd()
 	meta()
 	http.HandleFunc("/", EraiHandler)
+	http.HandleFunc("/a", SaveHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
