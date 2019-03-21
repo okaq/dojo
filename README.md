@@ -37,4 +37,9 @@ experiments with wave form collapse
 sample frmo prior dsitributions
 but also attempt to invent new ones
 
+hiki - server side game state
+with client side sync tests
+web scalable multiplayer
+with peer net stats and visualization
+
 
