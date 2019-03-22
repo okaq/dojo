@@ -19,9 +19,13 @@ var (
 )
 
 func motd() {
+	fmt.Println("web serving on localhost:8080")
+	fmt.Printf("%s\n", time.Now().String())
 }
 
-func HikiHandler() {
+func HikiHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	http.ServeFile(w,r,INDEX)
 }
 
 func main() {
