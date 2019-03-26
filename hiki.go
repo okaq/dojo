@@ -28,9 +28,15 @@ func HikiHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func StatHandler(w http>responseWriter, r *http.Request) {
+	fmt.Println(r)
+	// pretty print state cache to writer
+}
+
 func main() {
 	motd()
 	http.HandleFunc("/", HikiHandler)
+	http.HandleFunc("/s", StatHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
