@@ -14,7 +14,8 @@ const (
 )
 
 var (
-
+	// cache, concurrency-safe
+	C map[string]string
 )
 
 func motd() {
