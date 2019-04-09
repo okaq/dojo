@@ -16,6 +16,8 @@ const (
 var (
 	// cache, concurrency-safe
 	C map[string]string
+	// counter, atomic
+	U uint64
 )
 
 func motd() {
@@ -24,11 +26,14 @@ func motd() {
 
 func JiniHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r)
+	// increment counter
 	http.ServeFile(w,r,INDEX)
 }
 
 func main() {
 	motd()
+	// init counter
+	// init cache
 	http.HandleFunc("/", JiniHandler)
 	http.ListenAndServe(":8080", nil)
 }
