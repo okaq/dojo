@@ -30,11 +30,17 @@ func JiniHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,INDEX)
 }
 
+func StatsHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	// output visit count
+}
+
 func main() {
 	motd()
 	// init counter
 	// init cache
 	http.HandleFunc("/", JiniHandler)
+	http.HandleFunc("/s", StatsHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
