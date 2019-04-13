@@ -18,10 +18,17 @@ var (
 	C map[string]string
 	// counter, atomic
 	U uint64
+	// accumulator
+	G <- int
 )
 
 func motd() {
 	fmt.Println(time.Now().String())
+}
+
+func counter() {
+	// launch goroutine
+	// and for loop reciever	
 }
 
 func JiniHandler(w http.ResponseWriter, r *http.Request) {
@@ -38,6 +45,7 @@ func StatsHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	motd()
 	// init counter
+	counter()
 	// init cache
 	http.HandleFunc("/", JiniHandler)
 	http.HandleFunc("/s", StatsHandler)
