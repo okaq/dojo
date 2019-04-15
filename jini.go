@@ -31,6 +31,12 @@ func counter() {
 	// and for loop reciever	
 }
 
+func cache() {
+	// key is user id
+	// value is key into db
+	// store pid, time, conn data
+}
+
 func JiniHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r)
 	// increment counter
@@ -47,6 +53,7 @@ func main() {
 	// init counter
 	counter()
 	// init cache
+	cache()
 	http.HandleFunc("/", JiniHandler)
 	http.HandleFunc("/s", StatsHandler)
 	http.ListenAndServe(":8080", nil)
