@@ -48,6 +48,13 @@ func StatsHandler(w http.ResponseWriter, r *http.Request) {
 	// output visit count
 }
 
+func PidHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	// two round trips
+	// one on initial load
+	// two on first player interaction
+}
+
 func main() {
 	motd()
 	// init counter
@@ -56,6 +63,7 @@ func main() {
 	cache()
 	http.HandleFunc("/", JiniHandler)
 	http.HandleFunc("/s", StatsHandler)
+	http.HandleFunc("/a", PidHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
