@@ -28,7 +28,7 @@ func motd() {
 
 func counter() {
 	// launch goroutine
-	// and for loop reciever	
+	// and for loop reciever
 }
 
 func cache() {
@@ -55,6 +55,12 @@ func PidHandler(w http.ResponseWriter, r *http.Request) {
 	// two on first player interaction
 }
 
+func ExtHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	// admin utilities
+	// monitor peer net, alter state
+}
+
 func main() {
 	motd()
 	// init counter
@@ -64,6 +70,7 @@ func main() {
 	http.HandleFunc("/", JiniHandler)
 	http.HandleFunc("/s", StatsHandler)
 	http.HandleFunc("/a", PidHandler)
+	http.HandleFunc("/x", ExtHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
