@@ -11,6 +11,7 @@ import (
 
 const (
 	INDEX = "jini.html"
+	FONTS = "fonts/NotoEmoji-Regular.ttf"
 )
 
 var (
@@ -61,6 +62,11 @@ func ExtHandler(w http.ResponseWriter, r *http.Request) {
 	// monitor peer net, alter state
 }
 
+func FontHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	http.ServeFile(w,r,FONTS)
+}
+
 func main() {
 	motd()
 	// init counter
@@ -71,6 +77,7 @@ func main() {
 	http.HandleFunc("/s", StatsHandler)
 	http.HandleFunc("/a", PidHandler)
 	http.HandleFunc("/x", ExtHandler)
+	http.HandleFunc("/e", FontHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
