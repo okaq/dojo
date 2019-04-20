@@ -40,8 +40,21 @@ var g = {
         "start": function() {
             // net pid
             // async font load
+            net.moji();
         }
     }
+// xhr
+var net = {
+    "moji": function() {
+        window.fetch("/e")
+            .then(resp => resp.ArrayBuffer())
+            .then(font => {
+                const fontFace = new FontFace('NotoEmoji-Regular', font);
+                document.fonts.add(fontFace);
+                document.body.style.fontFamily = '"NotoEmoji-Regular",Arial';
+            })
+    }
+}
    // dom
    var dom = {
         "init": function() {
