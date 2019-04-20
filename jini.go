@@ -20,7 +20,7 @@ var (
 	// counter, atomic
 	U uint64
 	// accumulator
-	G <- int
+	// G <- int
 )
 
 func motd() {
