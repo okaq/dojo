@@ -61,7 +61,10 @@ var sce = {
         dom.add(sce.b.c);
     },
     "moji": function() {
-
+        // unicode code points
+        // '\u263A' = 'smileface'
+        sce.b.t = '\u263A';
+        ren.txt();
     }
 }
 // xhr
@@ -87,6 +90,11 @@ var ren = {
     "pane": function() {
         sce.b.c.con.fillStyle = rgba.css([255,255,255,1.0]);
         sce.b.c.con.fillRect(0,0,sce.b.c.can.width,sce.b.c.can.height);
+    },
+    "txt": function() {
+        sce.b.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.b.c.con.font = '128px "Noto Emoji"';
+        sce.b.c.con.fillText(sce.b.t, 32, 256);
     }
 }
    // dom
