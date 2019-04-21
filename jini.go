@@ -81,4 +81,8 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 }
 
+// unicode code point ranges for emoji glyphs
+// '\u1f994' = 'hedgehog'
+// '\u1f987' = 'bat'
+
 

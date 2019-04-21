@@ -44,6 +44,19 @@ var g = {
             // net pid
             // async font load
             net.moji();
+
+            // loop
+            g.tick = 0;
+            g.id = window.setInterval(g.frame, 1000);
+        },
+        "frame": function() {
+            if (g.tick >= 8) {
+                console.log("anim done");
+                window.clearInterval(g.id);
+            }
+            // increment code point index
+            // render and sample glyph
+            g.tick = g.tick + 1;
         }
     }
 // scene
