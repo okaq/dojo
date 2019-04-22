@@ -52,7 +52,9 @@ var g = {
             g.id = window.setInterval(g.frame, 1000);
         },
         "frame": function() {
-            if (g.tick >= 8) {
+            console.log("glyph # " + g.tick + " / " + net.noto.numGlyphs);
+            console.log("glyph name = " + net.noto.glyphs.glyphs[g.tick].name);
+            if (g.tick >= net.noto.numGlyphs) {
                 console.log("anim done");
                 window.clearInterval(g.id);
             }
