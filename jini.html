@@ -54,6 +54,9 @@ var g = {
         "frame": function() {
             console.log("glyph # " + g.tick + " / " + net.noto.numGlyphs);
             console.log("glyph name = " + net.noto.glyphs.glyphs[g.tick].name);
+            console.log("glyph code point: " + net.noto.glyphs.glyphs[g.tick].unicode);
+            var s0 = String.fromCharCode(net.noto.glyphs.glyphs[g.tick].unicode);
+            console.log(s0);
             if (g.tick >= net.noto.numGlyphs) {
                 console.log("anim done");
                 window.clearInterval(g.id);
