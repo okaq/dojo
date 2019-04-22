@@ -10,6 +10,8 @@
         <style type="text/css">
             html,body{width:1920px;overflow:auto;height:1080px;margin:0px;border:0px;padding:0px;background-color:rgba(0,0,0,0);}
         </style>
+        <!-- openType.js -->
+        <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
         <script type="text/javascript">
             // ok
             console.log("okaq akari ok!");
@@ -89,6 +91,10 @@ var net = {
                 const fontFace = new FontFace('NotoEmoji-Regular', font);
                 document.fonts.add(fontFace);
                 document.body.style.fontFamily = '"Noto Emoji", Arial';
+
+                // opentype query
+                net.noto = opentype.parse(font);
+                console.log(net.noto);
 
                 sce.moji();
             })
