@@ -52,6 +52,12 @@ var g = {
             g.id = window.setInterval(g.frame, 1000);
         },
         "frame": function() {
+            // tick test
+            if (g.tick >= net.noto.numGlyphs) {
+                console.log("anim done");
+                window.clearInterval(g.id);
+                return;
+            }
             console.log("glyph # " + g.tick + " / " + net.noto.numGlyphs);
             console.log("glyph name = " + net.noto.glyphs.glyphs[g.tick].name);
             console.log("glyph code point: " + net.noto.glyphs.glyphs[g.tick].unicode);
@@ -64,20 +70,20 @@ var g = {
             // var s1 = String.fromCodePoint(parseInt(net.noto.glyphs.glyphs[g.tick].unicode));
             // sce.b.t3 = s1;
             var s3 = "";
+            // 16-bit max 65535
             if (s2 >= 12600) {
                 s3 = String.fromCodePoint(s2);
+                sce.b.t2 = s3;
             }
             console.log(s3);
             console.log(s0);
-            if (g.tick >= net.noto.numGlyphs) {
-                console.log("anim done");
-                window.clearInterval(g.id);
-            }
             // increment code point index
             // render and sample glyph
             // begins glitch after 12953
             // code point 1042476
             ren.glyph();
+            // sample pixel data
+            sce.buff();
             g.tick = g.tick + 1;
         }
     }
@@ -100,6 +106,13 @@ var sce = {
         // '\u263A' = 'smileface'
         sce.b.t = '\u263A';
         ren.txt();
+    },
+    "buff": function() {
+        // back buffer
+        sce.c = {};
+        sce.c.p = sce.b.c.can.getImageData(0,0,sce.b.c.can.width,sce.b.c.can.height);
+        sce.c.t = sce.c.p.data;
+        console.log(sce.c.t.length);
     }
 }
 // xhr
