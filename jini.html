@@ -64,6 +64,10 @@ var g = {
             var s0 = String.fromCharCode(net.noto.glyphs.glyphs[g.tick].unicode);
             sce.b.t2 = s0;
             var s2 = net.noto.glyphs.glyphs[g.tick].unicode;
+            // metrics
+            var b0 = net.noto.glyphs.glyphs[g.tick].getBoundingBox();
+            console.log(b0);
+            // use measure text object to get scaled size
             // console.log(typeof(s2));
             // var s3 = String.fromCodePoint(s2);
             // console.log("\\u" + s2);
@@ -110,7 +114,7 @@ var sce = {
     "buff": function() {
         // back buffer
         sce.c = {};
-        sce.c.p = sce.b.c.can.getImageData(0,0,sce.b.c.can.width,sce.b.c.can.height);
+        sce.c.p = sce.b.c.con.getImageData(0,0,sce.b.c.can.width,sce.b.c.can.height);
         sce.c.t = sce.c.p.data;
         console.log(sce.c.t.length);
     }
@@ -159,7 +163,11 @@ var ren = {
         // rng font
         sce.b.c.con.fillStyle = rgba.rand();
         sce.b.c.con.font = '400px "Noto Emoji"';
-        sce.b.c.con.fillText(sce.b.t2, 16, 400);
+        // measurement to detrmine dynamic centering
+        // var m0 = sce.b.c.con.measureText(sce.b.t2);
+        // console.log(m0);
+        // width = 507.8125, monospace
+        sce.b.c.con.fillText(sce.b.t2, 2, 400);
     }
 }
    // dom
