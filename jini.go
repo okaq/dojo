@@ -67,6 +67,11 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w,r,FONTS)
 }
 
+func SaveHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	// store the sampled bit array
+}
+
 func main() {
 	motd()
 	// init counter
@@ -78,6 +83,7 @@ func main() {
 	http.HandleFunc("/a", PidHandler)
 	http.HandleFunc("/x", ExtHandler)
 	http.HandleFunc("/e", FontHandler)
+	http.HandleFunc("/d", SaveHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
