@@ -136,11 +136,20 @@ var pod = {
         pod.h = 1024;
         pod.nx = 32;
         pod.ny = 32;
+        // stride of rgba data
+        pod.sx = (pod.nx * 4);
+        pod.sy = (pod.sx * pod.nx) >>> 0;
         pod.nt = (pod.nx * pod.ny) >>> 0;
         console.log(pod);
     },
     "dex": function(i0) {
         // index into rgba pixel data
+        var x0 = i0 % pod.nx;
+        var y0 = (i0 / pod.nx) >>> 0;
+        var i1 =  (y0 * pod.sy) >>> 0;
+        var x1 = (x0 * 4) >>> 0;
+        var i2 = (i1 + x1) >>> 0;
+        return i2;
     }
 }
 // xhr
