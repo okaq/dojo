@@ -32,7 +32,7 @@ var g = {
             console.log("start akari...");
 
             // subs
-            g.subs = [dom,sce];
+            g.subs = [dom,sce,pod];
             g.subs.forEach(function(el){el.init();});
 
             // wait and begin
@@ -89,6 +89,8 @@ var g = {
             // sample pixel data
             sce.buff();
             // threshold
+            sce.thresh();
+
             g.tick = g.tick + 1;
         }
     }
@@ -118,6 +120,27 @@ var sce = {
         sce.c.p = sce.b.c.con.getImageData(0,0,sce.b.c.can.width,sce.b.c.can.height);
         sce.c.t = sce.c.p.data;
         console.log(sce.c.t.length);
+    },
+    "thresh": function() {
+        // loop over 1024 32x32 pixel blocks
+        for (var i = 0; i < 1024; i++) {
+            // obtain pixel data index
+            var i0 = pod.dex(i);
+        }
+    }
+}
+// pixel data
+var pod = {
+    "init": function() {
+        pod.w = 1024;
+        pod.h = 1024;
+        pod.nx = 32;
+        pod.ny = 32;
+        pod.nt = (pod.nx * pod.ny) >>> 0;
+        console.log(pod);
+    },
+    "dex": function(i0) {
+        // index into rgba pixel data
     }
 }
 // xhr
