@@ -85,7 +85,8 @@ var g = {
             // render and sample glyph
             // begins glitch after 12953
             // code point 1042476
-            ren.glyph();
+            // ren.glyph();
+            ren.glyph2();
             // sample pixel data
             sce.buff();
             // threshold
@@ -150,6 +151,17 @@ var pod = {
         var x1 = (x0 * 4) >>> 0;
         var i2 = (i1 + x1) >>> 0;
         return i2;
+    },
+    "bloc": function(i0) {
+        // set of indicies in pixel block
+        var r0 = [];
+        for (var y = 0; y < pod.ny; y++) {
+            for (var x = 0; x < pod.nx; x++) {
+                var i1 = (i0 + x) >>> 0;
+                var i2 = (pod)
+            }
+        }
+        return r0;
     }
 }
 // xhr
@@ -169,6 +181,11 @@ var net = {
 
                 sce.moji();
             })
+    },
+    "flip": function() {
+        // fetch with Array Buffer payload
+        // 1024 bit array sample
+        // 
     }
 }
 // render
@@ -195,6 +212,22 @@ var ren = {
         sce.b.c.con.fillRect(0,0,sce.b.c.can.width,sce.b.c.can.height);
         // rng font
         sce.b.c.con.fillStyle = rgba.rand();
+        sce.b.c.con.font = '400px "Noto Emoji"';
+        // measurement to detrmine dynamic centering
+        // var m0 = sce.b.c.con.measureText(sce.b.t2);
+        // console.log(m0);
+        // width = 507.8125, monospace
+        sce.b.c.con.fillText(sce.b.t2, 2, 400);
+    },
+    "glyph2": function() {
+        // black bkgd
+        sce.a.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+        // white pane
+        sce.b.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.b.c.con.fillRect(0,0,sce.b.c.can.width,sce.b.c.can.height);
+        // black font
+        sce.b.c.con.fillStyle = rgba.css([0,0,0,1.0]);
         sce.b.c.con.font = '400px "Noto Emoji"';
         // measurement to detrmine dynamic centering
         // var m0 = sce.b.c.con.measureText(sce.b.t2);
