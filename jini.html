@@ -49,7 +49,9 @@ var g = {
 
             // loop
             g.tick = 0;
-            g.id = window.setInterval(g.frame, 1000);
+            // g.id = window.setInterval(g.frame, 1000);
+            // slow down for threholding
+            g.id = window.setInterval(g.frame, 5000);
         },
         "frame": function() {
             // tick test
@@ -127,6 +129,10 @@ var sce = {
         for (var i = 0; i < 1024; i++) {
             // obtain pixel data index
             var i0 = pod.dex(i);
+            // debug infor for center block
+            if (i == 512) {
+                console.log("center point index 512");
+            }
         }
     }
 }
@@ -158,7 +164,7 @@ var pod = {
         for (var y = 0; y < pod.ny; y++) {
             for (var x = 0; x < pod.nx; x++) {
                 var i1 = (i0 + x) >>> 0;
-                var i2 = (pod)
+                var i2 = (pod.nx * pod.w) * y;
             }
         }
         return r0;
