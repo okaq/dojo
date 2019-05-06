@@ -109,7 +109,12 @@ var sce = {
         sce.b = {};
         sce.b.r = [512,512,734,284];
         sce.b.c = dom.canvas(sce.b.r);
-        dom.add(sce.b.c);
+        // dom.add(sce.b.c);
+        // pane 2 - increase to 1024 x 1024
+        sce.c = {};
+        sce.c.r = [1024,1024,448,28];
+        sce.c.c = dom.canvas(sce.c.r);
+        dom.add(sce.c.c);
     },
     "moji": function() {
         // unicode code points
@@ -153,7 +158,7 @@ var pod = {
         // index into rgba pixel data
         var x0 = i0 % pod.nx;
         var y0 = (i0 / pod.nx) >>> 0;
-        var i1 =  (y0 * pod.sy) >>> 0;
+        var i1 = (y0 * pod.sy) >>> 0;
         var x1 = (x0 * 4) >>> 0;
         var i2 = (i1 + x1) >>> 0;
         return i2;
