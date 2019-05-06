@@ -88,7 +88,8 @@ var g = {
             // begins glitch after 12953
             // code point 1042476
             // ren.glyph();
-            ren.glyph2();
+            // ren.glyph2();
+            ren.glyph3();
             // sample pixel data
             sce.buff();
             // threshold
@@ -111,10 +112,10 @@ var sce = {
         sce.b.c = dom.canvas(sce.b.r);
         // dom.add(sce.b.c);
         // pane 2 - increase to 1024 x 1024
-        sce.c = {};
-        sce.c.r = [1024,1024,448,28];
-        sce.c.c = dom.canvas(sce.c.r);
-        dom.add(sce.c.c);
+        sce.d = {};
+        sce.d.r = [1024,1024,448,28];
+        sce.d.c = dom.canvas(sce.d.r);
+        dom.add(sce.d.c);
     },
     "moji": function() {
         // unicode code points
@@ -245,6 +246,22 @@ var ren = {
         // console.log(m0);
         // width = 507.8125, monospace
         sce.b.c.con.fillText(sce.b.t2, 2, 400);
+    },
+    "glyph3": function() {
+        // black bkgd
+        sce.a.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+        // white pane
+        sce.d.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.d.c.con.fillRect(0,0,sce.d.c.can.width,sce.d.c.can.height);
+        // black font
+        sce.d.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.d.c.con.font = '800px "Noto Emoji"';
+        // measurement to detrmine dynamic centering
+        // var m0 = sce.d.c.con.measureText(sce.b.t2);
+        // console.log(m0);
+        // width = 1015.625, monospace
+        sce.d.c.con.fillText(sce.b.t2, 2, 800);
     }
 }
    // dom
