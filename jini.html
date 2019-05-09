@@ -140,6 +140,18 @@ var sce = {
                 console.log("center point index 512");
             }
         }
+    },
+    "thresh2": function() {
+        // pixel blocks
+        for (var i = 0; i < 1024; i++) {
+            // decomp
+            var x0 = i % pod.nx;
+            var y0 = (i / pod.nx) >>> 0;
+            var i0 = (x0 * pod.nx) >>> 0;
+            var i1 = (y0 * pod.ry) >>> 0;
+            var i2 = (i0 + i1) >>> 0;
+            // obtain pixels indicies at block
+        }
     }
 }
 // pixel data
@@ -149,6 +161,9 @@ var pod = {
         pod.h = 1024;
         pod.nx = 32;
         pod.ny = 32;
+        // image stride
+        pod.rx = pod.w;
+        pod.ry = (pod.w * pod.nx) >>> 0;
         // stride of rgba data
         pod.sx = (pod.nx * 4);
         pod.sy = (pod.sx * pod.nx) >>> 0;
