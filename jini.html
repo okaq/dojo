@@ -167,6 +167,15 @@ var sce = {
         r0[2] = i2+2;
         r0[3] = i2+3;
         return r0;
+    },
+    "dete": function(c0, c1) {
+        // rgba compare
+        for (var i = 0; i < c0.length; i++) {
+            if (c0[i] != c1[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 // pixel data
