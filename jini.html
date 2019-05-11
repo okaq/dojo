@@ -130,6 +130,21 @@ var sce = {
         sce.c.t = sce.c.p.data;
         console.log(sce.c.t.length);
     },
+    "buff2": function() {
+        // idea is to have three
+        // "synchronous" buffers per image
+        sce.e = [];
+    },
+    "buff3": function() {
+        // per tick, init image buffers
+        sce.e[g.tick] = {};
+        // rgba pixel data 1024x1024x4
+        sce.e[g.tick].a = sce.d.c.con.getImageData(0,0,sce.d.c.can.width,sce.d.c.can.height);
+        // monochrome black white bit array 1024x1024
+        sce.e[g.tick].b = [];
+        // thresholded pixel block bit array 32x32
+        sce.e[g.tick].c = [];
+    },
     "thresh": function() {
         // loop over 1024 32x32 pixel blocks
         for (var i = 0; i < 1024; i++) {
@@ -142,6 +157,9 @@ var sce = {
         }
     },
     "thresh2": function() {
+        // init image buffers
+        sce.buff3();
+        // sce.e[g.tick] = {};
         // pixel blocks
         for (var i = 0; i < 1024; i++) {
             // decomp
