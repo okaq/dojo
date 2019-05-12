@@ -91,9 +91,11 @@ var g = {
             // ren.glyph2();
             ren.glyph3();
             // sample pixel data
-            sce.buff();
+            // sce.buff();
+            sce.buff3();
             // threshold
-            sce.thresh();
+            // sce.thresh();
+            sce.thresh3();
 
             g.tick = g.tick + 1;
         }
@@ -176,6 +178,24 @@ var sce = {
         // image pixels, 1024x1024
         // raw rgba, 1024x1024x4
     },
+    "thresh3": function() {
+        // init image buffers
+        sce.buff3();
+        // populate monochrome bit array
+        sce.mono();
+        // loop over 1024 32x32 pixel blocks
+        for (var i = 0; i < 1024; i++) {
+        }
+    },
+    "mono": function() {
+        // loop over pixels
+        for (var y = 0; y < pod.h; y++) {
+            for (var x = 0; x < pod.x; x++) {
+                // get index
+                var i0 = pod.dex2(x0, y0);
+            }
+        }
+    },
     "rgba": function(i0) {
         // pixel data
         var r0 = [];
@@ -220,6 +240,11 @@ var pod = {
         var x1 = (x0 * 4) >>> 0;
         var i2 = (i1 + x1) >>> 0;
         return i2;
+    },
+    "dex2": function(x0, y0) {
+        var i0 = (y0 * pod.w) >>> 0;
+        var i1 = (i0 + x0) >>> 0;
+        return i1;
     },
     "bloc": function(i0) {
         // set of indicies in pixel block
