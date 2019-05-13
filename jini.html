@@ -193,6 +193,10 @@ var sce = {
             for (var x = 0; x < pod.x; x++) {
                 // get index
                 var i0 = pod.dex2(x0, y0);
+                // rgba index
+                var i1 = (i0 * 4) >>> 0;
+                // rgba value
+                var c0 = sce.rgba2(i1);
             }
         }
     },
@@ -205,6 +209,16 @@ var sce = {
         r0[2] = i2+2;
         r0[3] = i2+3;
         return r0;
+    },
+    "rgba2": function(i0) {
+        var c0 = [];
+
+        c0[0] = sce.e[g.tick].a.data[i0+0];
+        c0[1] = sce.e[g.tick].a.data[i0+1];
+        c0[2] = sce.e[g.tick].a.data[i0+2];
+        c0[3] = sce.e[g.tick].a.data[i0+3];
+        
+        return c0;
     },
     "dete": function(c0, c1) {
         // rgba compare
