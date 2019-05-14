@@ -197,6 +197,13 @@ var sce = {
                 var i1 = (i0 * 4) >>> 0;
                 // rgba value
                 var c0 = sce.rgba2(i1);
+                var c1 = [0,0,0,255];
+                var c2 = sce.dete(c0, c1);
+                if (c2 == true) {
+                    sce.e[g.tick].b[i0] = 0;
+                } else {
+                    sce.e[g.tick].b[i0] = 1;
+                }
             }
         }
     },
