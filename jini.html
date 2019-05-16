@@ -48,10 +48,13 @@ var g = {
             net.moji();
 
             // loop
-            g.tick = 0;
+            // g.tick = 0;
             // g.id = window.setInterval(g.frame, 1000);
             // slow down for threholding
-            g.id = window.setInterval(g.frame, 5000);
+            // g.id = window.setInterval(g.frame, 5000);
+            // threshold debug
+            g,tick = 512;
+            g.id = window.setInterval(g.frame2, 2500);
         },
         "frame": function() {
             // tick test
@@ -98,6 +101,13 @@ var g = {
             sce.thresh3();
 
             g.tick = g.tick + 1;
+        },
+        "frame2": function() {
+            ren.glyph3();
+            sce.buff3();
+            sce.thresh3();
+
+            window.clearInterval(g.id);
         }
     }
 // scene
