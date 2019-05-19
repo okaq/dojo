@@ -208,14 +208,17 @@ var sce = {
         sce.buff3();
         // populate monochrome bit array
         sce.mono();
+        console.log(sce.e[g.tick].b);
         // loop over 1024 32x32 pixel blocks
-        for (var i = 0; i < 1024; i++) {
-        }
+        // for (var i = 0; i < 1024; i++) {
+        // }
+        // populate 32x32 threshold values
+        sce.pick();
     },
     "mono": function() {
         // loop over pixels
-        for (var y = 0; y < pod.h; y++) {
-            for (var x = 0; x < pod.x; x++) {
+        for (var y0 = 0; y0 < pod.h; y0++) {
+            for (var x0 = 0; x0 < pod.w; x0++) {
                 // get index
                 var i0 = pod.dex2(x0, y0);
                 // rgba index
@@ -224,6 +227,7 @@ var sce = {
                 var c0 = sce.rgba2(i1);
                 var c1 = [0,0,0,255];
                 var c2 = sce.dete(c0, c1);
+                // console.log(c0,c1,c2);
                 if (c2 == true) {
                     sce.e[g.tick].b[i0] = 0;
                 } else {
@@ -260,6 +264,11 @@ var sce = {
             }
         }
         return true;
+    },
+    "pick": function() {
+        // obtain 32x32 pixel block data
+        // count histogram
+        // and threshold by preset value
     }
 }
 // pixel data
