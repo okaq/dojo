@@ -77,8 +77,11 @@ func Solid() {
 
 func Square() {
 	// two color square within a square
-	c0 := color.RGBA{250,250,250,255}
-	c1 := color.RGBA{10,10,10,255}
+	// c0 := color.RGBA{250,250,250,255}
+	// c1 := color.RGBA{10,10,10,255}
+	// giri aomi, purple and gold
+	c0 := color.RGBA{255,222,150,255}
+	c1 := color.RGBA{70,108,179,255}
 	dx := I.Bounds().Dx()
 	dx2 := dx / 4
 	dx3 := 3 * dx / 4
@@ -150,8 +153,8 @@ func main() {
 	defer Js.Close()
 	Pixels()
 	// generator
-	Solid()
-	// Square()
+	// Solid()
+	Square()
 	Write()
 }
 

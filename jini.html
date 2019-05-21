@@ -269,6 +269,13 @@ var sce = {
         // obtain 32x32 pixel block data
         // count histogram
         // and threshold by preset value
+        for (var i = 0; i < 1024; i++) {
+            var p0 = sce.block(i);
+        }
+    },
+    "block": function(i0) {
+        // 32x32 block of pixels at block index
+        var i1 = pod.bloc(i0);
     }
 }
 // pixel data
@@ -304,6 +311,9 @@ var pod = {
     "bloc": function(i0) {
         // set of indicies in pixel block
         var r0 = [];
+        // block locale
+        var x0 = i0 % pod.nx;
+        var y0 = (i0 / pod.nx) >>> 0;
         for (var y = 0; y < pod.ny; y++) {
             for (var x = 0; x < pod.nx; x++) {
                 var i1 = (i0 + x) >>> 0;
