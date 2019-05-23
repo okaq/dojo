@@ -269,8 +269,15 @@ var sce = {
         // obtain 32x32 pixel block data
         // count histogram
         // and threshold by preset value
+        // randomize block index to test
+        var f0 = (Math.random() * pod.w) >>> 0;
+        console.log("testing index: " + r0);
         for (var i = 0; i < 1024; i++) {
-            var p0 = sce.block(i);
+            var p0 = sce.bock(i);
+            if (i == f0) {
+                // debug output
+
+            }
         }
     },
     "block": function(i0) {
