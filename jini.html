@@ -271,18 +271,20 @@ var sce = {
         // and threshold by preset value
         // randomize block index to test
         var f0 = (Math.random() * pod.w) >>> 0;
-        console.log("testing index: " + r0);
+        console.log("testing index: " + f0);
         for (var i = 0; i < 1024; i++) {
-            var p0 = sce.bock(i);
+            var p0 = sce.block(i);
             if (i == f0) {
                 // debug output
-
+                console.log(p0);
             }
         }
     },
     "block": function(i0) {
         // 32x32 block of pixels at block index
-        var i1 = pod.bloc(i0);
+        // var i1 = pod.bloc(i0);
+        var i1 = pod.bloc2(i0);
+        return i1;
     }
 }
 // pixel data
@@ -325,6 +327,25 @@ var pod = {
             for (var x = 0; x < pod.nx; x++) {
                 var i1 = (i0 + x) >>> 0;
                 var i2 = (pod.nx * pod.w) * y;
+                r0.push(i2);
+            }
+        }
+        return r0;
+    },
+    "bloc2": function(i0) {
+        // pixel block indiices
+        var r0 = [];
+        // block locale
+        var x0 = i0 % pod.nx;
+        var y0 = (i0 / pod.nx) >>> 0;
+        // stride accumulation
+        var x1 = (x0 * pod.nx) >>> 0;
+        var y1 = (y0 * pod.ry) >>> 0;
+        var i1 = (x1 + y1) >>> 0;
+        // block loop
+        for (var y = 0; y < pod.ny; y++) {
+            for (var x = 0; x < pod.nx; x++) {
+
             }
         }
         return r0;
