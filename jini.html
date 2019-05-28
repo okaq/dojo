@@ -345,7 +345,10 @@ var pod = {
         // block loop
         for (var y = 0; y < pod.ny; y++) {
             for (var x = 0; x < pod.nx; x++) {
-
+                var i2 = (y * pod.w) >>> 0;
+                var i3 = (i2 + x) >>> 0;
+                var i4 = (i3 + i1) >>> 0;
+                r0.push(i4);
             }
         }
         return r0;
