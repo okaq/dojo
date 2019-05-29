@@ -274,9 +274,12 @@ var sce = {
         console.log("testing index: " + f0);
         for (var i = 0; i < 1024; i++) {
             var p0 = sce.block(i);
+            // tally ones and zeros
             if (i == f0) {
                 // debug output
                 console.log(p0);
+                var t0 = sce.tally(p0);
+                console.log(t0);
             }
         }
     },
@@ -285,6 +288,17 @@ var sce = {
         // var i1 = pod.bloc(i0);
         var i1 = pod.bloc2(i0);
         return i1;
+    },
+    "tally": function(p0) {
+        var r0 = [0,0]; // count [zeros,ones]
+        for (var i = 0; i < p0.length; i++) {
+            if (p0[i] == 0) {
+                r0[0] = r0[0] + 1;
+            } else {
+                r0[1] = r0[1] + 1;
+            }
+        }
+        return r0;
     }
 }
 // pixel data
