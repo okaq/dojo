@@ -53,8 +53,11 @@ var g = {
             // slow down for threholding
             // g.id = window.setInterval(g.frame, 5000);
             // threshold debug
-            g.tick = 128;
-            g.id = window.setInterval(g.frame2, 2500);
+            // g.tick = 128;
+            // g.id = window.setInterval(g.frame2, 2500);
+            // accumulate
+            g.tick = 0;
+            g.id = window.setInterval(g.frame3, 5000);
         },
         "frame": function() {
             // tick test
@@ -112,6 +115,17 @@ var g = {
             sce.thresh3();
 
             window.clearInterval(g.id);
+        },
+        "frame3": function() {
+            // tick test
+            if (g.tick >= net.noto.numGlyphs) {
+                console.log("sampling finished");
+                window.clearInterval(g.id);
+                return;
+            }
+            // font data
+            g.meta();
+            g.tick = g.tick + 1;
         },
         "meta": function() {
             console.log("glyph # " + g.tick + " / " + net.noto.numGlyphs);
