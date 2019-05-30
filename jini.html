@@ -56,6 +56,7 @@ var g = {
             // g.tick = 128;
             // g.id = window.setInterval(g.frame2, 2500);
             // accumulate
+            sce.acc();
             g.tick = 0;
             g.id = window.setInterval(g.frame3, 5000);
         },
@@ -123,8 +124,23 @@ var g = {
                 window.clearInterval(g.id);
                 return;
             }
+
             // font data
             g.meta();
+            
+            // render and sample
+            ren.glyph3();
+            sce.buff2();
+            sce.buff3();
+            // sce.thresh3();
+            sce.mono();
+            sce.pick2();
+            sce.f[g.tick] = sce.e[g.tick].c;
+            // test output
+            if (g.tick == 15) {
+                console.log(sce.f[g.tick]);
+            }
+
             g.tick = g.tick + 1;
         },
         "meta": function() {
@@ -325,6 +341,23 @@ var sce = {
             }
         }
         return r0;
+    },
+    "acc": function() {
+        // samples
+        sce.f = [];
+    },
+    "pick2": function() {
+        // loop over 32x32 pixel blocks
+        for (var i = 0; i < pod.w; i++) {
+            var p0 = sce.block(i);
+            var t0 = sce.tally(p0);
+            // threshold
+            if (t0[0] > 0) {
+                sce.e[g.tick].c[i] = 0;
+            } else {
+                sce.e[g.tick].c[i] = 1;
+            }
+        }
     }
 }
 // pixel data
