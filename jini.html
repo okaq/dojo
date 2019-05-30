@@ -334,7 +334,10 @@ var sce = {
     "tally": function(p0) {
         var r0 = [0,0]; // count [zeros,ones]
         for (var i = 0; i < p0.length; i++) {
-            if (p0[i] == 0) {
+            var i0 = p0[i];
+            var p1 = sce.e[g.tick].b[i0];
+            // count fix, input array represent indicies into pixel data
+            if (p1 == 0) {
                 r0[0] = r0[0] + 1;
             } else {
                 r0[1] = r0[1] + 1;
