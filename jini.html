@@ -139,6 +139,7 @@ var g = {
             // test output
             if (g.tick == 15) {
                 console.log(sce.f[g.tick]);
+                ren.samp();
             }
 
             g.tick = g.tick + 1;
@@ -516,6 +517,26 @@ var ren = {
         // console.log(m0);
         // width = 1015.625, monospace
         sce.d.c.con.fillText(sce.b.t2, 2, 800);
+    },
+    "samp": function() {
+        // black bkgd
+        sce.a.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.a.c.con.fillRect(0,0,sce.a.c.can.width,sce.a.c.can.height);
+        // white pane
+        sce.d.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.d.c.con.fillRect(0,0,sce.d.c.can.width,sce.d.c.can.height);
+        // black pixel blocks
+        sce.d.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        for (var i = 0; i < sce.f[g.tick].length; i++) {
+            if (sce.f[g.tick][i] == 1) {
+                continue;
+            }
+            var x0 = i % pod.nx;
+            var y0 = (i / pod.nx) >>> 0;
+            var x1 = (x0 * pod.nx) >>> 0;
+            var y1 = (y0 * pod.nx) >>> 0;
+            sce.d.c.con.fillRect(x1,y1,pod.nx,pod.nx);
+        }
     }
 }
    // dom
