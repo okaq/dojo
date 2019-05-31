@@ -356,7 +356,9 @@ var sce = {
             var p0 = sce.block(i);
             var t0 = sce.tally(p0);
             // threshold
-            if (t0[0] > 0) {
+            var f0 = 0.25;
+            var t1 = f0 * pod.w;
+            if (t0[0] > t1) {
                 sce.e[g.tick].c[i] = 0;
             } else {
                 sce.e[g.tick].c[i] = 1;
