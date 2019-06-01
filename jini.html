@@ -139,9 +139,16 @@ var g = {
             // test output
             if (g.tick == 15) {
                 console.log(sce.f[g.tick]);
-                ren.samp();
+                // ren.samp();
             }
+            // defer render pixels
+            // generate stats for avg frame time
+            window.setTimeout(g.romp, 1000);
 
+            // g.tick = g.tick + 1;
+        },
+        "romp": function() {
+            ren.samp();
             g.tick = g.tick + 1;
         },
         "meta": function() {
