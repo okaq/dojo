@@ -58,6 +58,8 @@ var g = {
             // accumulate
             sce.acc();
             g.tick = 0;
+            // stats
+            g.s = [window.performance.now()];
             g.id = window.setInterval(g.frame3, 5000);
         },
         "frame": function() {
@@ -128,6 +130,8 @@ var g = {
             // font data
             g.meta();
             
+            // stats counter
+            var t0 = window.performance.now();
             // render and sample
             ren.glyph3();
             sce.buff2();
@@ -136,10 +140,14 @@ var g = {
             sce.mono();
             sce.pick2();
             sce.f[g.tick] = sce.e[g.tick].c;
+            var t1 = window.performance.now() - t0;
+            g.s.push(t1);
             // test output
             if (g.tick == 15) {
                 console.log(sce.f[g.tick]);
                 // ren.samp();
+                console.log(g.s);
+                // ~200ms per frame
             }
             // defer render pixels
             // generate stats for avg frame time
