@@ -67,6 +67,8 @@ var g = {
             if (g.tick >= net.noto.numGlyphs) {
                 console.log("anim done");
                 window.clearInterval(g.id);
+                // wrap
+                window.setTimeout(g.wrap, 1000);
                 return;
             }
             console.log("glyph # " + g.tick + " / " + net.noto.numGlyphs);
@@ -169,6 +171,16 @@ var g = {
 
             var b0 = net.noto.glyphs.glyphs[g.tick].getBoundingBox();
             console.log("glyph bounding box: " + b0);
+        },
+        "wrap": function() {
+            // send data to server
+            // calculate avg frame process time
+            var t0 = 0;
+            for (var i = 1; i < g.s.length; i++) {
+                t0 = t0 + g.s[i];
+            }
+            var t1 = t0 / (g.s.length - 1);
+            console.log("avg frame process time in ms. " + t1);
         }
     }
 // scene
