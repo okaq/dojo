@@ -498,6 +498,15 @@ var net = {
         var j0 = JSON.stringify(d0);
         console.log(j0);
         // post http body
+        window.fetch("/s", {
+                "method": POST,
+                "body": j0,
+        }).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            console.log(json);
+        })
+
     }
 }
 // render
