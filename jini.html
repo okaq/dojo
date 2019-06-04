@@ -486,6 +486,18 @@ var net = {
         // fetch with Array Buffer payload
         // 1024 bit array sample
         // 
+    },
+    "well": function() {
+        // json data format {"codepoint":[bitarray]}
+        var d0 = {};
+        for (var i = 0; i < sce.f.length; i++) {
+            var s0 = net.noto.glyphs.glyphs[i].unicode;
+            d0[s0] = sce.f[i];
+        }
+        console.log(d0);
+        var j0 = JSON.stringify(d0);
+        console.log(j0);
+        // post http body
     }
 }
 // render
