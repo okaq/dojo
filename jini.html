@@ -126,6 +126,8 @@ var g = {
             if (g.tick >= net.noto.numGlyphs) {
                 console.log("sampling finished");
                 window.clearInterval(g.id);
+                // wrap
+                window.setTimeout(g.wrap, 1000);
                 return;
             }
 
@@ -174,6 +176,8 @@ var g = {
         },
         "wrap": function() {
             // send data to server
+            // json data format {"codepoint":[bitarray]}
+            // use String.fromCharCode(codepoint) to obtain string
             // calculate avg frame process time
             var t0 = 0;
             for (var i = 1; i < g.s.length; i++) {
