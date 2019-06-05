@@ -70,6 +70,17 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r)
 	// store the sampled bit array
+	// create bytes buffer
+	b0 := new(bytes.Buffer)
+	b0.ReadFrom(r.Body)
+	fmt.Println(b0.Bytes())
+	fmt.Sprintf("Recieved %d bytes from sampler", b0.Len())
+	// parse json
+	j0, err := json.Marshal(b0.Bytes())
+	if err != nil {
+		fmt.Println(err)
+	}
+	// write to disk
 }
 
 func main() {
