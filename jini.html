@@ -193,7 +193,7 @@ var g = {
             var t1 = t0 / (g.s.length - 1);
             console.log("avg frame process time in ms. " + t1);
 
-            window.setTimeout(net.well, 1000);
+            window.setTimeout(net.well3, 1000);
         }
     }
 // scene
@@ -542,6 +542,47 @@ var net = {
             console.log(text);
         })
 
+    },
+    "well3": function() {
+        // json data format {"codepoint":[bitarray]}
+        var d0 = {};
+        for (var i = 0; i < sce.f.length; i++) {
+            var s0 = net.noto.glyphs.glyphs[i].unicode;
+            d0[s0] = sce.f[i];
+        }
+        console.log(d0);
+        var j0 = JSON.stringify(d0);
+        console.log(j0);
+        // pack bits into 8-bit bytes
+        var d1 = {};
+        for (var k0 in d0) {
+            d1[k0] = [];
+            var b0 = d0[k0];
+            // 1024 / 8 = 128
+            for (var i = 0; i < 128; i++) {
+                var i0 = (i * 8) >>> 0;
+                var i1 = (i0 + 8) >>> 0;
+                var d2 = b0.slice(i0, i1);
+                var d3 = d2.join("");
+                var d4 = parseInt(d3, 2);
+                d1[k0].push(d4);
+            }
+        }
+        console.log(d1);
+        var j1 = JSON.stringify(d1);
+        console.log(j1);
+        // post http body
+        window.fetch("/d", {
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                },
+                "body": j1,
+        }).then(function(response) {
+            return response.text();
+        }).then(function(text) {
+            console.log(text);
+        })
     }
 }
 // render

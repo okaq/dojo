@@ -15,6 +15,7 @@ import (
 const (
 	INDEX = "jini.html"
 	FONTS = "fonts/NotoEmoji-Regular.ttf"
+	NOTO = "fonts/noto_emoji_1.json"
 )
 
 var (
@@ -86,7 +87,8 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(string(j0))
 	// write to disk
-	ioutil.WriteFile("noto_emoji.json", j0, 0666)
+	// ioutil.WriteFile("noto_emoji.json", j0, 0666)
+	ioutil.WriteFile(NOTO, j0, 0666)
 	s0 := fmt.Sprintf("{bytes:%d}", len(j0))
 	b1 := []byte(s0)
 	w.Write(b1)
