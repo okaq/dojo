@@ -4,7 +4,10 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -74,13 +77,18 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	b0 := new(bytes.Buffer)
 	b0.ReadFrom(r.Body)
 	fmt.Println(b0.Bytes())
-	fmt.Sprintf("Recieved %d bytes from sampler", b0.Len())
+	fmt.Printf("Recieved %d bytes from sampler", b0.Len())
 	// parse json
 	j0, err := json.Marshal(b0.Bytes())
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println(string(j0))
 	// write to disk
+	ioutil.WriteFile("noto_emoji.json", j0, 0666)
+	s0 := fmt.Sprintf("{bytes:%d}", len(j0))
+	b1 := []byte(s0)
+	w.Write(b1)
 }
 
 func main() {

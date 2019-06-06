@@ -46,6 +46,8 @@ var g = {
             // net pid
             // async font load
             net.moji();
+        },
+        "start2": function() {
 
             // loop
             // g.tick = 0;
@@ -60,7 +62,7 @@ var g = {
             g.tick = 0;
             // stats
             g.s = [window.performance.now()];
-            g.id = window.setInterval(g.frame3, 5000);
+            g.id = window.setInterval(g.frame3, 500);
         },
         "frame": function() {
             // tick test
@@ -155,7 +157,7 @@ var g = {
             }
             // defer render pixels
             // generate stats for avg frame time
-            window.setTimeout(g.romp, 1000);
+            window.setTimeout(g.romp, 50);
 
             // g.tick = g.tick + 1;
         },
@@ -171,6 +173,11 @@ var g = {
             var s0 = String.fromCharCode(net.noto.glyphs.glyphs[g.tick].unicode);
             sce.b.t2 = s0;
 
+            // 16-bit max 65535
+            if (net.noto.glyphs.glyphs[g.tick].unicode >= 12600) {
+                sce.b.t2 = String.fromCodePoint(net.noto.glyphs.glyphs[g.tick].unicode);
+            }
+
             var b0 = net.noto.glyphs.glyphs[g.tick].getBoundingBox();
             console.log("glyph bounding box: " + b0);
         },
@@ -185,6 +192,8 @@ var g = {
             }
             var t1 = t0 / (g.s.length - 1);
             console.log("avg frame process time in ms. " + t1);
+
+            window.setTimeout(net.well, 1000);
         }
     }
 // scene
@@ -211,6 +220,8 @@ var sce = {
         // '\u263A' = 'smileface'
         sce.b.t = '\u263A';
         ren.txt();
+
+        g.start2();
     },
     "buff": function() {
         // back buffer
@@ -499,7 +510,10 @@ var net = {
         console.log(j0);
         // post http body
         window.fetch("/s", {
-                "method": POST,
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                },
                 "body": j0,
         }).then(function(response) {
             return response.json();
