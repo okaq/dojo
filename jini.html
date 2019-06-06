@@ -509,16 +509,37 @@ var net = {
         var j0 = JSON.stringify(d0);
         console.log(j0);
         // post http body
-        window.fetch("/s", {
+        window.fetch("/d", {
                 "method": "POST",
                 "headers": {
                     "Content-Type": "application/json",
                 },
                 "body": j0,
         }).then(function(response) {
-            return response.json();
-        }).then(function(json) {
-            console.log(json);
+            return response.text();
+        }).then(function(text) {
+            console.log(text);
+        })
+
+    },
+    "well2": function() {
+        // json data format {"codepoint":[bitarray]}
+        var d0 = {};
+        d0["data"] = [1,1,1,1,1,0];
+        console.log(d0);
+        var j0 = JSON.stringify(d0);
+        console.log(j0);
+        // post http body
+        window.fetch("/d", {
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                },
+                "body": j0,
+        }).then(function(response) {
+            return response.text();
+        }).then(function(text) {
+            console.log(text);
         })
 
     }

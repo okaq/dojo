@@ -74,6 +74,7 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r)
 	// store the sampled bit array
 	// create bytes buffer
+	fmt.Println(r.Body)
 	b0 := new(bytes.Buffer)
 	b0.ReadFrom(r.Body)
 	fmt.Println(b0.Bytes())
