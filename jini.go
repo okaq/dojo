@@ -86,9 +86,22 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 	fmt.Println(string(j0))
+	// unmarshal into map[string][]byte
+	// marshal to {"unicode":base64}
+	var d0 map[string][]byte
+	err = json.Unmarshal(b0.Bytes(), &d0)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(d0)
+	j1, err := json.Marshal(d0)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(j1)
 	// write to disk
 	// ioutil.WriteFile("noto_emoji.json", j0, 0666)
-	ioutil.WriteFile(NOTO, j0, 0666)
+	ioutil.WriteFile(NOTO, j1, 0666)
 	s0 := fmt.Sprintf("{bytes:%d}", len(j0))
 	b1 := []byte(s0)
 	w.Write(b1)
