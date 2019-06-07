@@ -107,6 +107,11 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(b1)
 }
 
+func NotoHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	http.ServeFile(w,r,NOTO)
+}
+
 func main() {
 	motd()
 	// init counter
@@ -119,6 +124,7 @@ func main() {
 	http.HandleFunc("/x", ExtHandler)
 	http.HandleFunc("/e", FontHandler)
 	http.HandleFunc("/d", SaveHandler)
+	http.HandleFunc("/n", NotoHandler)
 	http.ListenAndServe(":8080", nil)
 }
 
