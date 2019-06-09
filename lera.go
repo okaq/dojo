@@ -12,7 +12,8 @@ import (
 
 const (
 	INDEX = "lera.html"
-	NOJI = ""
+	NOJI = "noto_emoji_2.json"
+	GOLF = "golf_1.json"
 )
 
 func LeraHandler(w http.ResponseWriter, r *http.Request) {
@@ -23,6 +24,11 @@ func LeraHandler(w http.ResponseWriter, r *http.Request) {
 func NojiHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r)
 	http.ServeFile(w,r,NOJI)
+}
+
+func GolfHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
+	http.ServeFile(w,r,GOLF)
 }
 
 func motd() {
@@ -36,6 +42,7 @@ func main() {
 	// cache()
 	http.HandleFunc("/", LeraHandler)
 	http.HandleFunc("/a", NojiHandler)
+	http.HandleFunc("/b", GolfHandler)
 	http.ListenAndServe(":8080", nil)
 }
 

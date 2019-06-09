@@ -45,7 +45,10 @@ var g = {
             // fetch guji font
             // fetch golf man logo
             // time splits for transfer and decode
-
+            window.setTimeout(net.zen, 1000);
+        },
+        "golf": function() {
+            var t0 = window.performance.now();
         }
 }
 // scene
@@ -77,7 +80,19 @@ var ren = {
 // xhr
 var net = {
     "init": function() {
-        net.a = ["http://localhost:8080/a"];
+        net.a = [
+            "http://localhost:8080/a", // emojis
+            "http://localhost:8080/b", // golf logo
+        ];
+    },
+    "zen": function() {
+        window.fetch(net.a[1])
+            .then(resp => resp.json())
+            .then(json => {
+                net.golf = json;
+                console.log(net.golf);
+                window.setTimeout(g.golf, 1000);
+            })
     }
 }
    // dom
