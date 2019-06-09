@@ -52,6 +52,7 @@ var g = {
             bmp.golf();
             console.log("golf, dragon bitmaps and guji font decoded: " + (window.performance.now() - t0));
             // golf, dragon bitmaps and guji font decoded in 42ms
+            ren.golf();
         }
 }
 // scene
@@ -78,6 +79,26 @@ var ren = {
     "pane": function() {
         sce.b.c.con.fillStyle = rgba.rand();
         sce.b.c.con.fillRect(0,0,sce.b.c.can.width,sce.b.c.can.height);
+    },
+    "golf": function() {
+        ren.pane();
+        ren.bmp(bmp.a["golf"], sce.b.c);
+    },
+    "bmp": function(b0, c0) {
+        // render bitmap data in canvas
+        // assume block size 32x32, canvas size 1024x1024
+        // sce.b.c.con.fillStyle = rgba.rand();
+        for (var i = 0; i < b0.length; i++) {
+            if (b0[i] == 1) {
+                continue;
+            }
+            sce.b.c.con.fillStyle = rgba.rand();
+            var x0 = i % 32;
+            var y0 = (i / 32) >>> 0;
+            var x1 = (x0 * 32) >>> 0;
+            var y1 = (y0 * 32) >>> 0;
+            sce.b.c.con.fillRect(x1,y1,32,32);
+        } 
     }
 }
 // xhr
@@ -190,7 +211,7 @@ var net = {
             // decode golf
             var s2 = net.golf.golf["0"];
             var b2 = base64DecToArr(s2);
-            bmp.a["golf"] = bmp.exp(s2);
+            bmp.a["golf"] = bmp.exp(b2);
         },
         "exp": function(b0) {
             // expansion of uint8array
