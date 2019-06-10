@@ -62,6 +62,42 @@ var g = {
             console.log("bitmap emojis decoded: " + (window.performance.now() - t0));
             console.log("total emojis count: " + bmp.c.length);
             // 888 bitmap emojis decoded in 270 ms 
+
+            // small test loop
+            g.tick = 0;
+            g.avg = [];
+            g.id = window.setInterval(g.frame, 500);
+
+            // average time to render bitmap is 10 ms
+
+            // bit array ops library: rotate, shuffle, shiftX, shiftY
+            // rows, cols, reverse a bit array
+        },
+        "frame": function() {
+            if (g.tick >= 8) {
+                window.clearInterval(g.id);
+                console.log("anim done");
+                var sum = 0;
+                for (var i = 0; i < g.avg.length; i++) {
+                    sum = sum + g.avg[i];
+                }
+                var avg = sum / g.avg.length;
+                console.log("average bitmap emoji frame render time: " + avg);
+                return;
+            }
+
+            // render and time split
+            var b0 = (Math.random() * bmp.c.length) >>> 0;
+            var k0 = bmp.c[b0];
+            var b1 = bmp.b[k0];
+            console.log("bmp pick: " + k0);
+            var t0 = window.performance.now();
+            ren.pane();
+            ren.bmp(b1, sce.b.c);
+            var t1 = window.performance.now() - t0;
+            g.avg.push(t1);
+
+            g.tick = g.tick + 1;
         }
 }
 // scene
