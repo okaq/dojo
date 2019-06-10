@@ -53,6 +53,15 @@ var g = {
             console.log("golf, dragon bitmaps and guji font decoded: " + (window.performance.now() - t0));
             // golf, dragon bitmaps and guji font decoded in 42ms
             ren.golf();
+            // fetch noji
+            window.setTimeout(net.zuki, 1000);
+        },
+        "noji": function() {
+            var t0 = window.performance.now();
+            bmp.noji();
+            console.log("bitmap emojis decoded: " + (window.performance.now() - t0));
+            console.log("total emojis count: " + bmp.c.length);
+            // 888 bitmap emojis decoded in 270 ms 
         }
 }
 // scene
@@ -116,6 +125,15 @@ var net = {
                 net.golf = json;
                 console.log(net.golf);
                 window.setTimeout(g.golf, 1000);
+            })
+    },
+    "zuki": function() {
+        window.fetch(net.a[0])
+            .then(resp => resp.json())
+            .then(json => {
+                net.noji = json;
+                // console.log(net.noji);
+                window.setTimeout(g.noji, 1000);
             })
     }
 }
@@ -227,6 +245,17 @@ var net = {
                 }
             }
             return r0;
+        },
+        "noji": function() {
+            // decode bitmap emojis
+            bmp.b = {};
+            bmp.c = [];
+            for (var k0 in net.noji) {
+                var s0 = net.noji[k0];
+                var b0 = base64DecToArr(s0);
+                bmp.b[k0] = bmp.exp(b0);
+                bmp.c.push(k0);
+            }
         }
     }
     // string view
